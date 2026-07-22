@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al Manal BEACON LLC – UAE Corporate Services</title>
+    <link rel="icon" type="image/png" href="beaconlogo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+           CSS CUSTOM PROPERTIES – BRAND TOKEN SYSTEM
+        ============================================================ */
+        :root {
+            --white:      #FFFFFF;
+            --blue:       #2251A3;   /* Primary Brand – nav, headings, BG blocks  */
+            --orange:     #DF8627;   /* Accent – CTAs, icons, hovers, badges       */
+            --charcoal:   #212529;   /* Body text on white                          */
+            --blue-dark:  #1a3d7c;   /* Slightly deeper blue for hover states       */
+            --orange-dark:#c0711f;   /* Darker orange for button hover              */
+            --light-bg:   #f8f9fb;   /* Off-white section backgrounds                */
+            --border:     #e3e8f0;   /* Subtle card/divider borders                  */
+            --shadow:     0 4px 28px rgba(34, 81, 163, 0.10);
+            --shadow-lg:  0 8px 48px rgba(34, 81, 163, 0.16);
+
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body:    'Inter', system-ui, sans-serif;
+        }
+
+        /* ============================================================
+           BASE RESET & GLOBALS
+        ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
+
+        a { text-decoration: none; color: inherit; }
+
+        img { max-width: 100%; display: block; }
+
+        section { transition: background 0.3s; }
+
+        /* ============================================================
+           UTILITY CLASSES
+        ============================================================ */
+        .text-blue   { color: var(--blue) !important; }
+        .text-orange { color: var(--orange) !important; }
+        .bg-blue     { background-color: var(--blue) !important; }
+        .bg-light-section { background-color: var(--light-bg); }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 800;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading.white { color: var(--white); }
+
+        .section-divider {
+            width: 52px;
+            height: 4px;
+            background: var(--orange);
+            border-radius: 4px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .section-divider.left { margin-left: 0; }
+
+        /* ============================================================
+           BUTTONS
+        ============================================================ */
+        .btn-beacon-orange {
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .btn-beacon-orange:hover {
+            background-color: var(--orange-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(223, 134, 39, 0.4);
+        }
+
+        .btn-beacon-blue {
+            background-color: var(--blue);
+            color: var(--white);
+            border: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-beacon-blue:hover {
+            background-color: var(--blue-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 81, 163, 0.4);
+        }
+
+        .btn-outline-orange {
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .btn-outline-orange:hover {
+            background: var(--orange);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+        #mainNav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1030;
+            transition: background-color 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+            padding: 1.4rem 0;
+        }
+
+        #mainNav.nav-transparent {
+            background-color: transparent;
+        }
+
+        #mainNav.nav-scrolled {
+            background-color: var(--white);
+            box-shadow: 0 2px 20px rgba(34,81,163,0.10);
+            padding: 0.7rem 0;
+        }
+
+        #mainNav .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-placeholder {
+            height: 44px;
+            width: 160px;
+            background: linear-gradient(135deg, var(--blue) 0%, #3566c9 100%);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            padding: 0 1rem;
+            white-space: nowrap;
+            border: 2px dashed rgba(255,255,255,0.5);
+        }
+
+        #mainNav.nav-scrolled .logo-placeholder {
+            background: linear-gradient(135deg, var(--blue) 0%, #3566c9 100%);
+        }
+
+        .nav-link-beacon {
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--white) !important;
+            padding: 0.4rem 0.9rem !important;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-link-beacon::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0.9rem;
+            right: 0.9rem;
+            height: 2px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+            border-radius: 2px;
+        }
+        .nav-link-beacon:hover::after,
+        .nav-link-beacon.active::after { transform: scaleX(1); }
+
+        #mainNav.nav-scrolled .nav-link-beacon {
+            color: var(--charcoal) !important;
+        }
+        #mainNav.nav-scrolled .nav-link-beacon:hover {
+            color: var(--blue) !important;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.5);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        #mainNav.nav-scrolled .navbar-toggler {
+            border-color: rgba(34,81,163,0.4);
+        }
+        #mainNav.nav-scrolled .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(34,81,163,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ============================================================
+           HERO & INTERACTIVE CALCULATOR
+        ============================================================ */
+        #hero {
+            background-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(10, 24, 60, 0.85) 0%,
+                    rgba(18, 40, 100, 0.75) 50%,
+                    rgba(10, 24, 60, 0.90) 100%
+                ),
+                url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1800&q=80&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 0 5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .accent-word {
+            color: var(--orange);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Calculator Styles */
+        .calc-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            color: var(--charcoal);
+        }
+
+        .calc-metrics {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+        }
+
+        .metric-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .metric-value.pain { color: #dc2626; }
+        .metric-value.gain { color: #16a34a; }
+
+        .savings-banner {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .custom-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 50px;
+            background: #cbd5e1;
+            outline: none;
+        }
+
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--orange);
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .custom-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* ============================================================
+           ABOUT US SECTION
+        ============================================================ */
+        #about-us { padding: 6rem 0; }
+
+        .value-card {
+            background: #fdfdfd; 
+            border: 1px solid #eaeaea; 
+            border-radius: 16px; 
+            padding: 2rem; 
+            height: 100%; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02); 
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+            cursor: pointer;
+        }
+        .value-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 12px 30px rgba(34, 81, 163, 0.08) !important;
+            border-color: rgba(34, 81, 163, 0.15) !important;
+        }
+
+        .review-card {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.015);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(34, 81, 163, 0.06);
+            border-color: rgba(34, 81, 163, 0.1);
+        }
+
+        .view-more-card {
+            background: linear-gradient(135deg, rgba(34, 81, 163, 0.75) 0%, rgba(23, 59, 122, 0.85) 100%), url('reviews.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 25px rgba(34, 81, 163, 0.15);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .view-more-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(34, 81, 163, 0.25);
+            background: linear-gradient(135deg, rgba(34, 81, 163, 0.65) 0%, rgba(23, 59, 122, 0.75) 100%), url('reviews.jpg');
+            background-size: cover;
+        }
+
+        /* ============================================================
+           WHY UAE & SERVICES
+        ============================================================ */
+        #why-uae { padding: 6rem 0; }
+
+        .vp-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem 1.75rem;
+            height: 100%;
+            transition: transform 0.25s, box-shadow 0.25s;
+            position: relative;
+        }
+        .vp-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vp-number {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin-bottom: 0.4rem;
+        }
+        .vp-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+        .vp-desc { font-size: 0.9rem; color: #5a6470; margin: 0; }
+
+        #services { padding: 6rem 0; }
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.2rem 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(223,134,39,0.12) 0%, rgba(223,134,39,0.22) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.3rem;
+            font-size: 1.6rem;
+            color: var(--orange);
+        }
+        .service-title { font-weight: 700; color: var(--blue); margin-bottom: 0.6rem; }
+        .service-desc { font-size: 0.9rem; color: #5a6470; margin: 0; }
+
+        /* ============================================================
+           PACKAGES & TEAM
+        ============================================================ */
+        #packages { padding: 6rem 0; }
+        .pkg-card {
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.28s, box-shadow 0.28s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+        }
+        .pkg-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .pkg-badge {
+            position: absolute; top: 1rem; right: 1rem;
+            background: var(--orange); color: var(--white);
+            font-weight: 700; font-size: 0.72rem;
+            padding: 0.3rem 0.8rem; border-radius: 50px;
+        }
+        .pkg-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+        .pkg-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--blue); margin-bottom: 0.65rem; }
+        .pkg-desc { font-size: 0.92rem; color: #5a6470; flex: 1; }
+        .pkg-footer { margin-top: 1.4rem; }
+
+        #team { padding: 6rem 0; }
+        .team-card {
+            background: var(--white); border-radius: 18px; overflow: hidden;
+            box-shadow: var(--shadow); border: 1px solid var(--border);
+            transition: transform 0.25s, box-shadow 0.25s; text-align: center;
+        }
+        .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .team-body { padding: 1.5rem 1.4rem; }
+        .team-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--blue); }
+        .team-role { font-size: 0.82rem; font-weight: 600; color: var(--orange); text-transform: uppercase; }
+        .team-bio { font-size: 0.88rem; color: #5a6470; }
+        .team-social { display: flex; justify-content: center; gap: 0.7rem; }
+        .team-social a {
+            width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--border);
+            display: flex; align-items: center; justify-content: center; color: var(--blue);
+        }
+
+        /* ============================================================
+           PARTNER & CONTACT
+        ============================================================ */
+        #partner { padding: 5rem 0; position: relative; }
+        .partner-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px; padding: 0.3rem 1rem; color: var(--white);
+        }
+        .partner-headline { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--white); }
+
+        #contact { padding: 6rem 0; }
+        .contact-info-item { display: flex; gap: 1rem; margin-bottom: 1.6rem; }
+        .contact-icon {
+            width: 46px; height: 46px; background: linear-gradient(135deg, var(--blue) 0%, #3566c9 100%);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white);
+        }
+        .contact-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #a0aab5; }
+        .contact-value { font-weight: 600; font-size: 0.95rem; }
+
+        .contact-form-wrapper {
+            background: var(--white); border-radius: 20px; padding: 2.5rem;
+            box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+        }
+        .form-label-beacon { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--charcoal); }
+        .form-control-beacon {
+            border: 1.5px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem;
+            width: 100%; background: var(--white);
+        }
+        .form-control-beacon:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(34,81,163,0.12); }
+
+        /* ============================================================
+           FOOTER & ANIMATIONS
+        ============================================================ */
+        #footer { background: #0d1f4a; color: rgba(255,255,255,0.75); padding: 3.5rem 0 2rem; }
+        .footer-brand-text { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--white); }
+        .footer-heading { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; color: var(--orange); }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links a { color: rgba(255,255,255,0.65); }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* Quiz Custom Component CSS Tokens */
+        .quiz-opt { border-width: 2px !important; border-radius: 12px !important; font-weight: 500 !important; font-size: 0.92rem !important; transition: all 0.2s; color: var(--charcoal); }
+        .quiz-opt:hover { background-color: #f1f5f9; border-color: var(--blue) !important; color: var(--blue); transform: translateX(3px); }
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(223, 134, 39, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(223, 134, 39, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(223, 134, 39, 0); }
+        }
+        .animate-pulse { animation: pulseGlow 2s infinite ease-in-out; }
+
+        @media (max-width: 991.98px) {
+            #hero { padding-top: 6rem; text-align: center; }
+            .calc-container { margin-top: 3rem; }
+        }
+        @media (min-width: 992px) {
+            .col-lg-2-4 { flex: 0 0 20% !important; max-width: 20% !important; }
+        }
+
+        /* ============================================================
+   FLOATING AI AGENT WIDGET DESIGN TOKENS
+============================================================ */
+.ai-agent-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1050; /* Placed over your background blocks */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+}
+
+/* Fades in smoothly once window scrolls past 350px */
+.ai-agent-container.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Custom Speech Bubble Box Layout */
+.ai-speech-bubble {
+    background: #ffffff;
+    color: var(--charcoal);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    border-bottom-right-radius: 4px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    max-width: 200px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    animation: floatBubbleUpAndDown 3s infinite ease-in-out;
+}
+
+/* Little tail arrow pointing to the avatar button */
+.ai-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transform: rotate(45deg);
+}
+
+/* Rounded CEO Avatar Trigger Layout */
+/* Transparent Avatar Wrapper — No borders, no circles, completely clean */
+.ai-avatar-btn {
+    width: 150px;
+    height: auto;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover tilt effect remains intact on the illustration */
+.ai-avatar-btn:hover {
+    transform: scale(1.1) rotate(4deg);
+}
+
+/* Forces the portrait graphic to render natively */
+.ai-avatar-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Adjust the online badge positioning slightly to fit a raw photo outline */
+.ai-online-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 14px;
+    height: 14px;
+    background-color: #10b981;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+    </style>
+</head>
+
+<body>
+
+<nav id="mainNav" class="navbar navbar-expand-lg nav-transparent py-4">
+    <div class="container">
+        <a class="navbar-brand p-0 m-0" href="#hero" style="width: 1px; height: 50px; visibility: hidden;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link nav-link-beacon" href="#hero">Home</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-beacon" href="#about-us">About Us</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-beacon" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-beacon" href="#team">Team</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-beacon" href="#partner">Partners</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-beacon" href="#blog">Insights</a></li>
+                <li class="nav-item ms-lg-2">
+                   <a class="btn btn-beacon-orange btn-sm px-3 py-2" href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank">Book a FREE Consultation</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header id="hero">
+    <div class="container d-none d-lg-block" style="position: absolute; top: 15px; left: 0; right: 0; pointer-events: none; z-index: 10;">
+        <img src="beaconlogo.png" alt="Al Manal BEACON LLC" style="height: 250px; width: auto; pointer-events: auto;" />
+    </div>
+
+    <div class="container position-relative" style="z-index: 12;">
+        <div class="row align-items-center g-5">
+            
+            <div class="col-lg-6 text-start">
+                <div class="hero-badge" style="display: inline-flex; align-items: center; background: rgba(223, 134, 39, 0.15); border: 1px solid rgba(223, 134, 39, 0.4); color: #FFB356; font-weight: 700; letter-spacing: 0.5px; border-radius: 50px; padding: 0.4rem 1.2rem; font-size: 0.8rem;">
+                     <i class="bi bi-exclamation-triangle-fill me-2" style="color: #FFB356;"></i>
+                     Stop Bleeding Revenue to EU Taxes
+                </div>
+                <h1 class="hero-title mt-3">
+                    Why Suffer the <span style="color: #FFB356;">Pain</span> of European Taxes?
+                </h1>
+                <p class="hero-subtitle">
+                    <p class="hero-subtitle">
+                        Running a business in Europe or the UK means losing up to 25% to 35% of your hard-earned corporate profits to taxes. <br><br>By migrating your structure or registering in the UAE, you unlock an elite 0% personal tax, optimize your corporate liability, and step into an unmatched lifestyle ecosystem.
+                    </p>
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start">
+                    <a href="#why-uae" class="btn btn-beacon-orange"><i class="bi bi-arrow-down-circle me-2"></i>See UAE Advantages</a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="calc-container">
+                    <h3 class="fw-bold mb-1 text-blue text-start" style="font-size: 1.4rem;">Calculate Your Savings Blueprint</h3>
+                    <p class="text-muted text-start mb-4" style="font-size: 0.85rem;">Select your operational base to calculate real-time savings.</p>
+                    
+                    <div class="mb-4 text-start">
+                        <label class="form-label-beacon mb-2">Current Location</label>
+                        <select id="calcCountry" class="form-select border-2 p-2" style="border-radius: 10px;">
+                            <option value="0.25" data-region="UK">United Kingdom (~25.0% Tax)</option>
+                            <option value="0.301" data-region="EU" selected>Germany (~30.1% Tax)</option>
+                            <option value="0.278" data-region="EU">Italy (~27.8% Tax)</option>
+                            <option value="0.258" data-region="EU">Netherlands (~25.8% Tax)</option>
+                            <option value="0.258" data-region="EU">France (~25.8% Tax)</option>
+                            <option value="0.25" data-region="EU">Spain (~25.0% Tax)</option>
+                            <option value="0.09" data-region="EU">Hungary (~9.0% Tax)</option>
+                            <option value="0.25" data-region="EU">Belgium (~25.0% Tax)</option>
+                            <option value="0.19" data-region="EU">Portugal (~19.0% Tax)</option>
+                            <option value="0.125" data-region="EU">Ireland (~12.5% Tax)</option>
+                            <option value="0.35" data-region="EU">Malta (~35.0% Tax)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4 text-start">
+                        <div class="d-flex justify-content-between align-items-center mb-3 p-1 bg-light rounded-3" style="max-width: 200px;">
+                            <button type="button" id="toggleEUR" class="btn btn-sm w-50 fw-bold rounded-2 btn-beacon-blue" style="padding: 0.35rem 0; font-size:0.85rem;">EUR (€)</button>
+                            <button type="button" id="toggleUSD" class="btn btn-sm w-50 fw-bold rounded-2 text-secondary bg-transparent border-0" style="padding: 0.35rem 0; font-size:0.85rem;">USD ($)</button>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label for="calcProfitInput" class="form-label-beacon m-0">Annual Net Profit (<span class="currency-symbol">€</span>)</label>
+                            <div class="input-group input-group-sm" style="width: 160px;">
+                                <span class="input-group-text border-2 bg-light text-blue fw-bold currency-symbol" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">€</span>
+                                <input type="number" id="calcProfitInput" class="form-control border-2 fw-bold text-blue" min="50000" max="2000000" step="25000" value="250000" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-size: 1rem; padding: 0.3rem 0.5rem;">
+                            </div>
+                        </div>
+                        <input type="range" id="calcProfitSlider" class="custom-slider" min="50000" max="2000000" step="25000" value="250000">
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-6 text-start">
+                            <div class="calc-metrics h-100 p-3" style="background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+                                <div id="foreignTaxTitle" class="metric-title" style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">EU Tax Cost</div>
+                                <div id="euTaxDisplay" class="metric-value pain" style="font-size: 1.4rem; font-weight: 800; color: #dc2626;">€75,000</div>
+                            </div>
+                        </div>
+                        <div class="col-6 text-start">
+                            <div class="calc-metrics h-100 p-3" style="background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+                                <div class="metric-title" style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">UAE Tax Cost</div>
+                                <div id="uaeTaxDisplay" class="metric-value gain" style="font-size: 1.4rem; font-weight: 800; color: #16a34a;">€13,500</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="savings-banner mb-4 text-center p-4 text-white" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); border-radius: 12px;">
+                        <div class="text-uppercase fw-bold opacity-75" style="font-size: 0.75rem; letter-spacing: 1px;">Potential Annual Savings</div>
+                        <div id="savingsDisplay" class="fw-black m-0" style="font-size: 2.2rem; font-weight: 800;">€61,500</div>
+                        <div id="calcExplanation" class="small opacity-90 mt-2 border-top border-white border-opacity-20 pt-2" style="font-size: 0.8rem; font-weight: 300;">
+                            Leveraging the UAE's 0% threshold on your first AED 375,000 of business profit.
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank" class="btn btn-beacon-orange w-100 py-3 text-uppercase fw-bold" style="font-size: 0.95rem; border-radius: 50px; background-color: #2251A3; border: none; color: #fff;">
+                            <i class="bi bi-calendar-check-fill me-2"></i>Claim These Savings – Book a Free Consultation
+                        </a>
+                    </div>
+                </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const calcCountry = document.getElementById("calcCountry");
+    const calcProfitInput = document.getElementById("calcProfitInput");
+    const calcProfitSlider = document.getElementById("calcProfitSlider");
+    const foreignTaxTitle = document.getElementById("foreignTaxTitle");
+    const euTaxDisplay = document.getElementById("euTaxDisplay");
+    const uaeTaxDisplay = document.getElementById("uaeTaxDisplay");
+    const savingsDisplay = document.getElementById("savingsDisplay");
+    const calcExplanation = document.getElementById("calcExplanation");
+
+    const toggleEUR = document.getElementById("toggleEUR");
+    const toggleUSD = document.getElementById("toggleUSD");
+    const currencySymbols = document.querySelectorAll(".currency-symbol");
+
+    let activeCurrency = "EUR";
+
+    // Reference Peg Values against AED 
+    const currencyRates = {
+        USD: 3.6725, // Fixed Peg
+        EUR: 3.95    // EUR to AED Conversion
+    };
+
+    const symbols = {
+        USD: "$",
+        EUR: "€"
+    };
+
+    function renderFormattedValue(val) {
+        return symbols[activeCurrency] + Math.round(val).toLocaleString();
+    }
+
+    function computeEngine() {
+        let revenueProfit = parseFloat(calcProfitInput.value) || 0;
+        if (revenueProfit <= 0) revenueProfit = 1;
+
+        const targetOption = calcCountry.options[calcCountry.selectedIndex];
+        const nominalTaxRate = parseFloat(targetOption.value);
+        const corporateRegion = targetOption.getAttribute("data-region");
+
+        // Dynamic Card Title Adjustments
+        if (corporateRegion === "UK") {
+            foreignTaxTitle.textContent = "UK Tax Cost";
+        } else {
+            foreignTaxTitle.textContent = "EU Tax Cost";
+        }
+
+        // 1. Foreign baseline calculation
+        const foreignTotalLiability = revenueProfit * nominalTaxRate;
+
+        // 2. UAE progressive validation (Calculated through AED)
+        const conversionMultiplier = currencyRates[activeCurrency];
+        const profitConvertedToAED = revenueProfit * conversionMultiplier;
+        
+        let localTaxLiabilityInAED = 0;
+        if (profitConvertedToAED > 375000) {
+            localTaxLiabilityInAED = (profitConvertedToAED - 375000) * 0.09;
+        }
+        
+        const localUaeTaxCost = localTaxLiabilityInAED / conversionMultiplier;
+
+        // 3. Differential outcome metrics
+        const optimizationSpread = foreignTotalLiability - localUaeTaxCost;
+
+        // 4. Update elements safely
+        euTaxDisplay.textContent = renderFormattedValue(foreignTotalLiability);
+        uaeTaxDisplay.textContent = renderFormattedValue(localUaeTaxCost);
+        savingsDisplay.textContent = renderFormattedValue(Math.max(0, optimizationSpread));
+
+        // Build explanatory prompt showing user the converted 0% tier allowance
+        const localThresholdEquivalence = Math.round(375000 / conversionMultiplier);
+        calcExplanation.textContent = `Leveraging the UAE's 0% tax bracket on your first ${renderFormattedValue(localThresholdEquivalence)} of profit. Remaining profit is taxed at just 9%.`;
+    }
+
+    // Connect slider inputs seamlessly
+    calcProfitSlider.addEventListener("input", function () {
+        calcProfitInput.value = this.value;
+        computeEngine();
+    });
+
+    calcProfitInput.addEventListener("input", function () {
+        calcProfitSlider.value = this.value;
+        computeEngine();
+    });
+
+    calcCountry.addEventListener("change", computeEngine);
+
+    // Switch controllers for active currency states
+    function updateCurrencyTab(activeBtn, inactiveBtn, choice) {
+        activeBtn.classList.add("btn-beacon-blue");
+        activeBtn.classList.remove("text-secondary", "bg-transparent", "border-0");
+        inactiveBtn.classList.remove("btn-beacon-blue");
+        inactiveBtn.classList.add("text-secondary", "bg-transparent", "border-0");
+
+        activeCurrency = choice;
+        currencySymbols.forEach(element => element.textContent = symbols[choice]);
+        computeEngine();
+    }
+
+    toggleEUR.addEventListener("click", function() {
+        updateCurrencyTab(toggleEUR, toggleUSD, "EUR");
+    });
+
+    toggleUSD.addEventListener("click", function() {
+        updateCurrencyTab(toggleUSD, toggleEUR, "USD");
+    });
+
+    // Execute on initial payload mount
+    computeEngine();
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const calcCountry = document.getElementById("calcCountry");
+    const calcProfitInput = document.getElementById("calcProfitInput");
+    const calcProfitSlider = document.getElementById("calcProfitSlider");
+    const foreignTaxTitle = document.getElementById("foreignTaxTitle");
+    const euTaxDisplay = document.getElementById("euTaxDisplay");
+    const uaeTaxDisplay = document.getElementById("uaeTaxDisplay");
+    const savingsDisplay = document.getElementById("savingsDisplay");
+    const calcExplanation = document.getElementById("calcExplanation");
+    
+    const foreignTaxBadge = document.getElementById("foreignTaxBadge");
+    const uaeTaxBadge = document.getElementById("uaeTaxBadge");
+
+    const toggleEUR = document.getElementById("toggleEUR");
+    const toggleUSD = document.getElementById("toggleUSD");
+    const currencySymbols = document.querySelectorAll(".currency-symbol");
+
+    let activeCurrency = "EUR";
+
+    // 2026 Reference Peg Values against AED 
+    const currencyRates = {
+        USD: 3.6725, // Immutable Fixed Peg
+        EUR: 3.95    // EUR to AED Average Market Standard
+    };
+
+    const symbols = {
+        USD: "$",
+        EUR: "€"
+    };
+
+    function renderFormattedValue(val) {
+        return symbols[activeCurrency] + Math.round(val).toLocaleString();
+    }
+
+    function computeEngine() {
+        let revenueProfit = parseFloat(calcProfitInput.value) || 0;
+        if (revenueProfit <= 0) revenueProfit = 1;
+
+        const targetOption = calcCountry.options[calcCountry.selectedIndex];
+        const nominalTaxRate = parseFloat(targetOption.value);
+        const corporateRegion = targetOption.getAttribute("data-region");
+
+        // Dynamic Card Title Adjustments
+        if (corporateRegion === "UK") {
+            foreignTaxTitle.textContent = "UK Tax Cost";
+        } else {
+            foreignTaxTitle.textContent = "EU Tax Cost";
+        }
+
+        // 1. Foreign baseline calculation
+        const foreignTotalLiability = revenueProfit * nominalTaxRate;
+        const foreignEffectivePercentage = (foreignTotalLiability / revenueProfit) * 100;
+
+        // 2. UAE progressive validation (Calculated through AED)
+        const conversionMultiplier = currencyRates[activeCurrency];
+        const profitConvertedToAED = revenueProfit * conversionMultiplier;
+        
+        let localTaxLiabilityInAED = 0;
+        if (profitConvertedToAED > 375000) {
+            localTaxLiabilityInAED = (profitConvertedToAED - 375000) * 0.09;
+        }
+        
+        const localUaeTaxCost = localTaxLiabilityInAED / conversionMultiplier;
+        const uaeEffectivePercentage = (localUaeTaxCost / revenueProfit) * 100;
+
+        // 3. Differential outcome metrics
+        const optimizationSpread = foreignTotalLiability - localUaeTaxCost;
+
+        // 4. Update elements safely
+        euTaxDisplay.textContent = renderFormattedValue(foreignTotalLiability);
+        uaeTaxDisplay.textContent = renderFormattedValue(localUaeTaxCost);
+        savingsDisplay.textContent = renderFormattedValue(Math.max(0, optimizationSpread));
+
+        // Update effective percentage indicators
+        foreignTaxBadge.textContent = `${foreignEffectivePercentage.toFixed(1)}% Effective`;
+        uaeTaxBadge.textContent = `${uaeEffectivePercentage.toFixed(1)}% Effective`;
+
+        // Build explanatory prompt showing user the converted 0% tier allowance
+        const localThresholdEquivalence = Math.round(375000 / conversionMultiplier);
+        calcExplanation.textContent = `Leveraging the UAE's 0% tax bracket on your first ${renderFormattedValue(localThresholdEquivalence)} of profit. Remaining profit is taxed at just 9%.`;
+    }
+
+    // Connect slider inputs seamlessly
+    calcProfitSlider.addEventListener("input", function () {
+        calcProfitInput.value = this.value;
+        computeEngine();
+    });
+
+    calcProfitInput.addEventListener("input", function () {
+        calcProfitSlider.value = this.value;
+        computeEngine();
+    });
+
+    calcCountry.addEventListener("change", computeEngine);
+
+    // Switch controllers for active currency states
+    function updateCurrencyTab(activeBtn, inactiveBtn, choice) {
+        activeBtn.classList.add("btn-beacon-blue");
+        activeBtn.classList.remove("text-secondary", "bg-transparent", "border-0");
+        inactiveBtn.classList.remove("btn-beacon-blue");
+        inactiveBtn.classList.add("text-secondary", "bg-transparent", "border-0");
+
+        activeCurrency = choice;
+        currencySymbols.forEach(element => element.textContent = symbols[choice]);
+        computeEngine();
+    }
+
+    toggleEUR.addEventListener("click", function() {
+        updateCurrencyTab(toggleEUR, toggleUSD, "EUR");
+    });
+
+    toggleUSD.addEventListener("click", function() {
+        updateCurrencyTab(toggleUSD, toggleEUR, "USD");
+    });
+
+    // Execute on initial payload mount
+    computeEngine();
+});
+</script>
+
+        </div>
+    </div>
+</header>
+
+<section id="about-us" class="bg-white" style="padding: 5rem 0;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7 text-start">
+                <span class="section-eyebrow">Who We Are</span>
+                <h2 class="section-heading left">Your Guiding Light in UAE Business</h2>
+                <div class="section-divider left"></div>
+                <p class="mb-4 text-secondary fs-5" style="line-height: 1.8;">
+                    Established in 2014, we have the desire to help entrepreneurs, business owners, and corporations to expand into new markets by establishing tax-free companies in the United Arab Emirates.
+                </p>
+                <p class="mb-4 text-secondary fs-5" style="line-height: 1.8;">
+                    As the word “BEACON” is used by seamen to direct their ships in the vast sea, we aim to be a guiding light for businesses getting started in the Middle East. We make sure that our clients sail safely in the sea of business.
+                </p>
+                <div class="mt-4">
+                    <a class="btn btn-beacon-orange btn-sm px-3 py-2" href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank">Book a free Consultation</a>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 d-flex justify-content-center align-items-center">
+                <div class="about-image-wrapper" style="box-shadow: var(--shadow-lg); border-radius: 16px; overflow: hidden; max-width: 420px; width: 100%; border: 1px solid rgba(0,0,0,0.05);">
+                    <img src="ceo1.jpg" alt="CEO of Al Manal BEACON LLC" class="img-fluid" style="width: 100%; height: auto; display: block;" />
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 0; height: 3px; background: linear-gradient(to right, rgba(13,31,74,0) 0%, rgba(13,31,74,0.18) 50%, rgba(13,31,74,0) 100%); margin: 5.5rem 0 4rem 0;">
+
+        <div class="row mb-5 text-center">
+            <div class="col-12">
+                <span class="section-eyebrow d-block mb-2" style="font-size: 0.85rem;">Client Testimonials</span>
+                <h3 style="font-weight: 800; color: #2251A3; font-size: 2.25rem; margin-bottom: 0.5rem;">Voices of Success</h3>
+                <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                    <span style="font-weight: 700; color: #333333; font-size: 1.1rem;">Excellent</span>
+                    <div style="color: #FFB356;">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <span style="color: #777777; font-size: 0.9rem;">based on Google Reviews</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 layout-reviews-wrapper mb-5">
+            <div class="col-xl-9">
+                <div class="row g-4" id="google-reviews-container">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading reviews...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3">
+                <a href="https://share.google/rcsx1TKkE7awb66YW" target="_blank" rel="noopener noreferrer" class="view-more-card">
+                    <div style="background: rgba(255,255,255,0.15); padding: 1rem; border-radius: 50%; margin-bottom: 1.25rem; backdrop-filter: blur(4px);">
+                        <i class="bi bi-google" style="color: #ffffff; font-size: 2rem; display: block;"></i>
+                    </div>
+                    <h4 style="color: #ffffff; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">View More Reviews</h4>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                        Read all of our verified 5-star customer success stories.
+                    </p>
+                    <div style="background: #E39238; color: #ffffff; font-weight: 600; font-size: 0.88rem; padding: 0.6rem 1.2rem; border-radius: 30px; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                        Let's Go <i class="bi bi-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="marquee-wrapper mt-5 pt-4" style="overflow: hidden; user-select: none; width: 100%; position: relative;">
+    
+            <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 15%; z-index: 2; pointer-events: none; background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%);"></div>
+            <div style="position: absolute; top: 0; bottom: 0; right: 0; width: 15%; z-index: 2; pointer-events: none; background: linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0) 100%);"></div>
+
+            <div class="marquee-track" style="display: flex; width: max-content;">
+                
+                <div class="marquee-group">
+                    <a href="https://rakez.com/" target="_blank" rel="noopener noreferrer"><img src="p1.jpg" alt="RAKEZ" style="height: 60px;"></a>
+                    <a href="https://dubaisouth.ae/" target="_blank" rel="noopener noreferrer"><img src="p2.png" alt="Dubai South" style="height: 65px;"></a>
+                    <a href="https://www.adgm.com/" target="_blank" rel="noopener noreferrer"><img src="p3.jpg" alt="ADGM" style="height: 55px;"></a>
+                    <a href="https://dubaicentral.ae/" target="_blank" rel="noopener noreferrer"><img src="p4.png" alt="Dubai Outsource City" style="height: 60px;"></a>
+                    <a href="https://www.difc.ae/" target="_blank" rel="noopener noreferrer"><img src="p5.png" alt="DIFC" style="height: 100px;"></a>
+                    <a href="https://www.rakbank.ae/" target="_blank" rel="noopener noreferrer"><img src="p6.jpg" alt="RAKBANK" style="height: 55px;"></a>
+                    <a href="https://www.cbd.ae/" target="_blank" rel="noopener noreferrer"><img src="p7.png" alt="Commercial Bank of Dubai" style="height: 120px;"></a>
+                    <a href="https://ded.ae/" target="_blank" rel="noopener noreferrer"><img src="p8.png" alt="Dubai Economy" style="height: 80px;"></a>
+                    <a href="https://www.mashreq.com/" target="_blank" rel="noopener noreferrer"><img src="p9.png" alt="Mashreq" style="height: 150px;"></a>
+                    <a href="https://ded.ae/" target="_blank" rel="noopener noreferrer"><img src="p10.jpg" alt="Department of Economic Development" style="height: 75px;"></a>
+                    <a href="https://dubaistudiocity.ae/" target="_blank" rel="noopener noreferrer"><img src="p11.jpg" alt="Dubai Studio City" style="height: 75px;"></a>
+                    <a href="https://www.dhcc.ae/" target="_blank" rel="noopener noreferrer"><img src="p12.png" alt="Dubai Healthcare City" style="height: 65px;"></a>
+                    <a href="https://www.kizad.ae/" target="_blank" rel="noopener noreferrer"><img src="p13.JPG" alt="KIZAD" style="height: 60px;"></a>
+                    <a href="https://www.twofour54.com/" target="_blank" rel="noopener noreferrer"><img src="p14.PNG" alt="twofour54" style="height: 60px;"></a>
+                </div>
+
+                <div class="marquee-group" aria-hidden="true">
+                    <a href="https://rakez.com/" target="_blank" rel="noopener noreferrer"><img src="p1.jpg" alt="RAKEZ" style="height: 60px;"></a>
+                    <a href="https://dubaisouth.ae/" target="_blank" rel="noopener noreferrer"><img src="p2.png" alt="Dubai South" style="height: 65px;"></a>
+                    <a href="https://www.adgm.com/" target="_blank" rel="noopener noreferrer"><img src="p3.jpg" alt="ADGM" style="height: 55px;"></a>
+                    <a href="https://dubaicentral.ae/" target="_blank" rel="noopener noreferrer"><img src="p4.png" alt="Dubai Outsource City" style="height: 75px;"></a>
+                    <a href="https://www.difc.ae/" target="_blank" rel="noopener noreferrer"><img src="p5.png" alt="DIFC" style="height: 75px;"></a>
+                    <a href="https://www.rakbank.ae/" target="_blank" rel="noopener noreferrer"><img src="p6.jpg" alt="RAKBANK" style="height: 55px;"></a>
+                    <a href="https://www.cbd.ae/" target="_blank" rel="noopener noreferrer"><img src="p7.png" alt="Commercial Bank of Dubai" style="height: 60px;"></a>
+                    <a href="https://ded.ae/" target="_blank" rel="noopener noreferrer"><img src="p8.png" alt="Dubai Economy" style="height: 65px;"></a>
+                    <a href="https://www.mashreq.com/" target="_blank" rel="noopener noreferrer"><img src="p9.png" alt="Mashreq" style="height: 55px;"></a>
+                    <a href="https://ded.ae/" target="_blank" rel="noopener noreferrer"><img src="p10.jpg" alt="Department of Economic Development" style="height: 75px;"></a>
+                    <a href="https://dubaistudiocity.ae/" target="_blank" rel="noopener noreferrer"><img src="p11.jpg" alt="Dubai Studio City" style="height: 60px;"></a>
+                    <a href="https://www.dhcc.ae/" target="_blank" rel="noopener noreferrer"><img src="p12.png" alt="Dubai Healthcare City" style="height: 65px;"></a>
+                    <a href="https://www.kizad.ae/" target="_blank" rel="noopener noreferrer"><img src="p13.JPG" alt="KIZAD" style="height: 60px;"></a>
+                    <a href="https://www.twofour54.com/" target="_blank" rel="noopener noreferrer"><img src="p14.PNG" alt="twofour54" style="height: 60px;"></a>
+                </div>
+                
+            </div>
+        </div>
+
+        <style>
+            :root {
+                --logo-spacing: 55px;
+            }
+
+            @keyframes infiniteScroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-100%); }
+            }
+            .marquee-track:hover .marquee-group {
+                animation-play-state: paused !important;
+            }
+            .marquee-group {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                gap: var(--logo-spacing);
+                padding-right: var(--logo-spacing);
+                animation: infiniteScroll 50s linear infinite;
+            }
+            .marquee-group a {
+                display: block;
+                transition: transform 0.2s ease;
+            }
+            .marquee-group a:hover {
+                transform: scale(1.06);
+            }
+            .marquee-group img {
+                width: auto;
+                max-width: 180px;
+                object-fit: contain;
+                filter: grayscale(10%) opacity(0.85);
+                transition: filter 0.2s ease;
+            }
+            .marquee-group a:hover img {
+                filter: grayscale(0%) opacity(1);
+            }
+        </style>
+    </div>
+</section>
+
+<section id="why-uae" style="position: relative; padding: 6rem 0; background-image: linear-gradient(rgba(248, 249, 251, 0.88), rgba(248, 249, 251, 0.88)), url('dubai1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="text-center mb-5 reveal">
+            <span class="section-eyebrow">Why the UAE?</span>
+            <h2 class="section-heading">The World's Most Tax-Efficient<br />Business Jurisdiction</h2>
+            <div class="section-divider"></div>
+            <p class="text-muted mx-auto" style="max-width:580px; font-size:0.98rem; line-height:1.75;">
+                The UAE offers an unmatched combination of financial sovereignty, global connectivity, and zero personal taxation — making it the premier destination for international entrepreneurs.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 reveal delay-1">
+                <div class="vp-card">
+                    <div class="vp-number">9%</div>
+                    <div class="vp-title">Corporate Tax</div>
+                    <p class="vp-desc">Applicable only on net profits exceeding €95k EUR annually — one of the world's most competitive corporate tax regimes.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal delay-2">
+                <div class="vp-card">
+                    <div class="vp-number">0%</div>
+                    <div class="vp-title">Personal Income Tax</div>
+                    <p class="vp-desc">Keep 100% of what you earn personally. Zero taxation on salary, bonuses, and executive compensation — forever.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal delay-3">
+                <div class="vp-card">
+                    <div class="vp-number">0%</div>
+                    <div class="vp-title">Tax on Dividends &amp; Royalties</div>
+                    <p class="vp-desc">Seamless corporate repatriation of wealth globally. Distribute profits and royalties to shareholders free of withholding tax.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal delay-1">
+                <div class="vp-card">
+                    <div class="vp-number">5%</div>
+                    <div class="vp-title">Standard VAT</div>
+                    <p class="vp-desc">A minimal 5% standard VAT rate on domestic consumption — the lowest among major global economic hubs.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal delay-2">
+                <div class="vp-card">
+                    <div class="vp-number">100%</div>
+                    <div class="vp-title">Total Asset Protection</div>
+                    <p class="vp-desc">Complete operational freedom to run your business globally from anywhere, with robust legal structures protecting your assets.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 reveal delay-3">
+                <div class="vp-card" style="background:linear-gradient(135deg,var(--blue) 0%,#3566c9 100%); border-color:transparent; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                    <i class="bi bi-lightning-charge-fill mb-3" style="font-size:2.5rem; color:var(--orange);"></i>
+                    <div class="vp-title" style="color:var(--white); font-size:1.15rem; margin-bottom:0.8rem;">Ready to Make the Move?</div>
+                    <p class="vp-desc" style="color:rgba(255,255,255,0.78); margin-bottom:1.4rem;">Our experts walk you through every step — from entity selection to your first banking transaction.</p>
+                    <a class="btn btn-beacon-orange btn-sm px-3 py-2" href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank">Book a free Consultation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="bg-white">
+    <div class="container" style="position: relative; z-index: 1;">
+        <div class="text-center mb-5 reveal">
+            <span class="section-eyebrow" style="font-size: 0.95rem;">Our Services</span>
+            <h2 class="section-heading" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">End-to-End Corporate Solutions<br />Built for Global Entrepreneurs</h2>
+            <div class="section-divider" style="margin-bottom: 1rem;"></div>
+            <p class="text-muted mx-auto" style="max-width:540px; font-size:0.9rem; line-height:1.6;">
+                From entity formation to banking, compliance, and strategic advisory — we handle the entire lifecycle of your UAE corporate presence so you can focus on growth.
+            </p>
+        </div>
+
+        <div class="row g-3 justify-content-center"> 
+            
+            <div class="col-md-6 col-lg-3 reveal delay-1"> 
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-building-fill-check"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Company Registration</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">We will establish your company, whether it is in a Free Zone or on the Mainland.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-2">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-passport-fill"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Visa Processing</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">Get your visa processed in record time, including VIP door-to-door service.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-3">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-bank2"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Corporate Account Opening</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">We will handle the entire process and get your business bank account opened for you.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-1">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-calculator-fill"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Accounting &amp; Tax Services</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">Complete lifecycle compliance management including localized VAT implementation, corporate strategy advisory, and personal corporate tax structuring.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-2">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-shield-lock-fill"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Intellectual Property Services</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">Secure your competitive edge through trademark registrations, brand filings, and corporate asset protection across the Middle East landscape.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-3">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-file-earmark-person-fill"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Personal Documentation</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">We take care of your personal documents, such as exchanging your driver’s license.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-1">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-graph-up-arrow"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Market Research</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">Find out the in and outs of the UAE market and expand your business with knowledge.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-2">
+                <div class="service-card h-100" style="padding: 1.5rem 1.25rem; border-radius: 12px;">
+                    <div class="service-icon" style="width: 48px; height: 46px; font-size: 1.3rem; margin-bottom: 1rem;"><i class="bi bi-pie-chart-fill"></i></div>
+                    <div class="service-title" style="font-size: 0.95rem; margin-bottom: 0.4rem;">Feasibility Study</div>
+                    <p class="service-desc" style="font-size: 0.85rem; line-height: 1.5; color: #64748b;">Do you have a new idea? Find out how viable it is as a business.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="packages" style="position: relative; padding: 6rem 0; background-image: linear-gradient(rgba(248, 249, 251, 0.88), rgba(248, 249, 251, 0.88)), url('dubai2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="text-center mb-5 reveal">
+            <span class="section-eyebrow">Specialized Packages</span>
+            <h2 class="section-heading">Structured Solutions for<br />Every Business Profile</h2>
+            <div class="section-divider"></div>
+            <!--<button type="button" class="btn btn-beacon-orange animate-pulse" data-bs-toggle="modal" data-bs-target="#jurisdictionQuizModal" style="background-color: var(--orange); border: 2px solid var(--orange); color: var(--white);">
+                <i class="bi bi-question-circle-fill me-2"></i>Freezone? Mainland? Where do I qualify?
+            </button>-->
+        </div>
+
+        <!-- Centered row with slightly larger columns (col-lg-5) -->
+        <div class="row g-4 mb-5 justify-content-center">
+    
+            <div class="col-lg-5 reveal delay-1">
+                <div class="pkg-card">
+                    <img src="skyline.png" alt="Mainland Company Package" class="img-fluid" style="height:200px; object-fit:cover; width:100%; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
+                    <div class="pkg-body">
+                    <div class="pkg-title">Mainland Company Package</div>
+                        <p class="pkg-desc">Not eligible for a free zone? We provide affordable mainland company setup solutions across the UAE, with reliable sponsorship and customized packages.</p>
+                        <div class="pkg-footer text-center d-flex justify-content-center pt-2">
+                            <a href="https://wa.me/971547775023?text=Hello,%20I%20am%20interested%20in%20the%20Mainland%20Company%20Package." 
+                            target="_blank" 
+                            class="btn btn-beacon-orange btn-sm d-inline-flex align-items-center justify-content-center gap-2 px-4 py-2" 
+                            style="width: 100%; max-width: 210px; white-space: nowrap; font-weight: 600; border-radius: 50px;">
+                            Enquire Now <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 reveal delay-2">
+                <div class="pkg-card">
+                    <div style="position: relative; width: 100%;">
+                        <span class="pkg-badge" style="z-index: 2;">Save up to 50%</span>
+                            <img src="business.png" alt="Multiple Years Package" class="img-fluid" style="height:200px; object-fit:cover; width:100%; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
+                    </div>
+                    <div class="pkg-body">
+                <div class="pkg-title">Freezone Company Package</div>
+                        <p class="pkg-desc">Save up to 50% and avoid annual renewals with a multi-year business license—an ideal solution for startups.</p>
+                        <div class="pkg-footer text-center d-flex justify-content-center pt-2">
+                            <a href="https://wa.me/971547775023?text=Hello,%20I%20am%20interested%20in%20the%20Multiple%20Years%20Company%20Package." 
+                            target="_blank" 
+                            class="btn btn-beacon-orange btn-sm d-inline-flex align-items-center justify-content-center gap-2 px-4 py-2" 
+                            style="width: 100%; max-width: 210px; white-space: nowrap; font-weight: 600; border-radius: 50px;">
+                            Enquire Now <i class="bi bi-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-timeline-wrapper" style="padding-top: 4.5rem; border-top: 1px solid rgba(0,0,0,0.06);">
+    
+        <style>
+            .process-step-node {
+                cursor: pointer;
+            }
+            .step-icon-circle {
+                transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                            border-color 0.3s ease, 
+                            box-shadow 0.3s ease !important;
+            }
+            .process-step-node:hover .step-icon-circle {
+                transform: translateY(-5px) scale(1.05);
+                border-color: var(--orange) !important;
+                box-shadow: 0 8px 24px rgba(223, 134, 39, 0.25) !important;
+            }
+            .process-step-node:hover .step-icon-circle i {
+                color: var(--orange) !important;
+                transition: color 0.3s ease;
+            }
+        </style>
+
+        <div class="text-center mb-5 reveal">
+            <span class="section-eyebrow" style="color: #c27803;">How it Works</span>
+            <div class="section-divider" style="background: #c27803; width: 50px; height: 3px; margin: 15px auto;"></div>
+        </div>
+
+        <div class="position-relative mx-auto" style="max-width: 1140px;">
+            <div class="d-none d-lg-block position-absolute" style="top: 35px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, #e2ecdb, #b9d1f3, #e5e7eb); z-index: 1;"></div>
+            <div class="row g-4 position-relative" style="z-index: 2;">
+                
+                <div class="col-md-6 col-lg-2-4 text-center reveal">
+                    <div class="process-step-node">
+                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                            <i class="bi bi-telephone-inbound" style="color: #1e429f; font-size: 1.6rem;"></i>
+                        </div>
+                        <h5 style="font-size: 1rem; font-weight: 700;">Free Consultation</h5>
+                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We discuss your specific business goals and match you with the ideal UAE corporate solution.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2-4 text-center reveal delay-1">
+                    <div class="process-step-node">
+                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                            <i class="bi bi-person-check" style="color: #1e429f; font-size: 1.6rem;"></i>
+                        </div>
+                        <h5 style="font-size: 1rem; font-weight: 700;">Onboarding</h5>
+                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">Provide us with your basic structural documents, and our setup team launches the process immediately.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2-4 text-center reveal delay-2">
+                    <div class="process-step-node">
+                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                            <i class="bi bi-file-earmark-text" style="color: #1e429f; font-size: 1.6rem;"></i>
+                        </div>
+                        <h5 style="font-size: 1rem; font-weight: 700;">License Issuance</h5>
+                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We handle the local registry paperwork. Your official company trade license is issued within a week.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2-4 text-center reveal delay-3">
+                    <div class="process-step-node">
+                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                            <i class="bi bi-passport" style="color: #1e429f; font-size: 1.6rem;"></i>
+                        </div>
+                        <h5 style="font-size: 1rem; font-weight: 700;">Visa Processing</h5>
+                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We coordinate your physical arrival window to complete required local medicals and residency biometrics.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2-4 text-center reveal delay-4">
+                    <div class="process-step-node">
+                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #c27803; box-shadow: 0 4px 15px rgba(194,120,3,0.15); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                            <i class="bi bi-bank" style="color: #c27803; font-size: 1.6rem;"></i>
+                        </div>
+                        <h5 style="font-size: 1rem; font-weight: 700; color: #c27803;">Bank Account Setup</h5>
+                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">Our advisors fully manage corporate compliance files to secure your primary corporate banking facilities.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="text-center mt-5 reveal delay-4">
+            <a href="#contact" class="btn btn-beacon-orange" style="padding: 0.75rem 2.5rem; display: inline-block; border-radius: 50px;">
+                Book a Free Consultation <i class="bi bi-calendar-event ms-2"></i>
+            </a>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section id="team" class="bg-white" style="padding: 5rem 0; overflow: hidden;">
+    <div class="container-fluid px-0">
+        <div class="text-center mb-5 reveal px-3">
+            <span class="section-eyebrow">Meet the Team</span>
+            <h2 class="section-heading">Expert Advisors Dedicated<br />to Your UAE Journey</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="marquee-container">
+            <div class="marquee-track">
+                
+                <div class="marquee-card-wrapper">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #000;">
+                                <img src="kinga.png" alt="Kinga Szabo – Founder & CEO" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Kinga Szabo</div>
+                                    <div class="team-role">Founder &amp; CEO</div>
+                                    <p class="team-bio mt-2 mb-0">She is the soul and mind of the company. With more than two decades of experience in the business world, this Oxford graduate expert can see beyond the walls of common misconceptions and find new horizons where the possibilities are infinite.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/kinga-judit-szabo-b494282a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="peter.png" alt="Peter Toth – Chief Operations Officer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Peter Toth</div>
+                                    <div class="team-role">Chief Service Director</div>
+                                    <p class="team-bio mt-2 mb-0">When a job requires experience and reliability, Peter is the best man for it. He can focus on targets and get things done, no matter the barriers or obstacles that appear in the way, and is always willing to help his team.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/peter-toth-33649679/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="leah.png" alt="Leah Camacho – Office Manager" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 90%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Leah Camacho</div>
+                                    <div class="team-role">Office Manager</div>
+                                    <p class="team-bio mt-2 mb-0">Leah excels in accuracy and efficiency, ensuring tasks are completed smoothly and on time. She adeptly juggles serious account management while delighting clients with her cheerful approach.</p>
+                                }</div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/leah-camacho-20413618b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="christine.png" alt="Christina Da Silva – Client Relationship Manager" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Christine De Silva</div>
+                                    <div class="team-role">Client Relationship Manager</div>
+                                    <p class="team-bio mt-2 mb-0">Christine brings a wealth of expertise to her role as a Customer Relationship Manager, specializing in high-level account management and meticulous legal documentation.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="sherry.png" alt="Sherry – Accountant" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Sherry Cagara</div>
+                                    <div class="team-role">Accountant</div>
+                                    <p class="team-bio mt-2 mb-0">She is a dedicated accounting professional specializing in financial administration, account management, and precise legal and financial documentation.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/sherry-jane-cagara-012139ba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="yusuf.png" alt="Yousuf – Legal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Yousuf Mir</div>
+                                    <div class="team-role">Legal</div>
+                                    <p class="team-bio mt-2 mb-0">He is a dedicated legal professional specializing in corporate setups, compliance requirements, and meticulous legal and structural documentation.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="marquee-card-wrapper" aria-hidden="true">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #000;">
+                                <img src="kinga.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Kinga Szabo</div>
+                                    <div class="team-role">Founder &amp; CEO</div>
+                                    <p class="team-bio mt-2 mb-0">She is the soul and mind of the company. With more than two decades of experience in the business world, this Oxford graduate expert can see beyond the walls of common misconceptions and find new horizons where the possibilities are infinite.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/kinga-judit-szabo-b494282a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper" aria-hidden="true">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="peter.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Peter Toth</div>
+                                    <div class="team-role">Chief Service Officer</div>
+                                    <p class="team-bio mt-2 mb-0">When a job requires experience and reliability, Peter is the best man for it. He can focus on targets and get things done, no matter the barriers or obstacles that appear in the way, and is always willing to help his team.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/peter-toth-33649679/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper" aria-hidden="true">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="leah.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 90%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Leah Camacho</div>
+                                    <div class="team-role">Office Manager</div>
+                                    <p class="team-bio mt-2 mb-0">Leah excels in accuracy and efficiency, ensuring tasks are completed smoothly and on time. She adeptly juggles serious account management while delighting clients with her cheerful approach.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/leah-camacho-20413618b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper" aria-hidden="true">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="christine.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Christina Da Silva</div>
+                                    <div class="team-role">Client Relationship Manager</div>
+                                    <p class="team-bio mt-2 mb-0">Christine brings a wealth of expertise to her role as a Customer Relationship Manager, specializing in high-level account management and meticulous legal documentation.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper" aria-hidden="true">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="sherry.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Sherry Cagara</div>
+                                    <div class="team-role">Accountant</div>
+                                    <p class="team-bio mt-2 mb-0">She is a dedicated accounting professional specializing in financial administration, account management, and precise legal and financial documentation.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="https://www.linkedin.com/in/sherry-jane-cagara-012139ba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-card-wrapper" aria-hidden="true">
+                    <div class="team-card h-100" style="overflow: hidden;">
+                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
+                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
+                                <img src="yusuf.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block;" />
+                            </div>
+                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
+                                <div>
+                                    <div class="team-name">Yousuf Mir</div>
+                                    <div class="team-role">Legal</div>
+                                    <p class="team-bio mt-2 mb-0">He is a dedicated legal professional specializing in corporate setups, compliance requirements, and meticulous legal and structural documentation.</p>
+                                </div>
+                                <div class="team-social mt-3">
+                                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Container limits visibility to width of the screen */
+        .marquee-container {
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        /* The moving track holding both full sets side by side */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 45s linear infinite;
+        }
+
+        /* Set a fixed size for your team cards inside the marquee line */
+        .marquee-card-wrapper {
+            width: 550px; 
+            max-width: 85vw; /* Prevents overflow clipping on small mobile viewports */
+            padding: 0 15px; /* Acts as the gutter space between your cards */
+            flex-shrink: 0;
+        }
+
+        /* Pauses the slider movement entirely on hover for readability */
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        /* CSS Keyframe calculated to reset precisely at exactly half track width */
+        @keyframes marqueeScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</section>
+
+<section id="partner" style="padding: 6rem 0; background-color: #2251A3;">
+    <div class="container position-relative" style="z-index:1;">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5 reveal">
+                <div class="partner-image-wrapper" style="box-shadow: 0 20px 40px rgba(0,0,0,0.15); border-radius: 16px; overflow: hidden;">
+                    <img src="referral.jpg" alt="Become a Beacon Partner" class="img-fluid" style="width: 100%; height: auto; object-fit: cover; display: block;" />
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="d-flex flex-column align-items-start text-start">
+                    <span class="partner-badge reveal" style="display: inline-block; margin-bottom: 1rem;">
+                        <i class="bi bi-handshake-fill"></i> Affiliate &amp; Partner Programme
+                    </span>
+                    <h2 class="partner-headline reveal delay-1" style="margin-bottom: 1.5rem;">Be one of our referral partners</h2>
+                    <p class="reveal delay-2" style="margin-bottom: 2rem; max-width: 600px; line-height: 1.6; color: #ffffff;">
+                        Do you want to help other entrepreneurs to expand into new markets and save money in taxes while earning money at the same time? Then become a referral partner and start!
+                    </p>
+                    
+                    <div class="row g-3 mt-2 w-100">
+                        <div class="col-md-4 reveal delay-1">
+                            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:1.25rem; height: 100%;">
+                                <i class="bi bi-currency-dollar mb-2 d-block" style="font-size:1.8rem; color:var(--orange);"></i>
+                                <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:0.4rem;">Premium Commissions</div>
+                                <div style="font-size:0.84rem; color:rgba(255,255,255,0.68); line-height: 1.4;">Earn competitive referral fees for every successful setup.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 reveal delay-2">
+                            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:1.25rem; height: 100%;">
+                                <i class="bi bi-shield-check mb-2 d-block" style="font-size:1.8rem; color:var(--orange);"></i>
+                                <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:0.4rem;">Full Support</div>
+                                <div style="font-size:0.84rem; color:rgba(255,255,255,0.68); line-height: 1.4;">We handle all execution — you simply introduce and earn.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 reveal delay-3">
+                            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:1.25rem; height: 100%;">
+                                <i class="bi bi-globe2 mb-2 d-block" style="font-size:1.8rem; color:var(--orange);"></i>
+                                <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:0.4rem;">Global Network</div>
+                                <div style="font-size:0.84rem; color:rgba(255,255,255,0.68); line-height: 1.4;">Join international advisors across 60+ countries.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal delay-3 mt-4 pt-2">
+                        <a href="https://wa.me/971547775023" target="_blank" rel="noopener noreferrer" class="btn btn-beacon-orange">
+                            <i class="bi bi-whatsapp me-2"></i>Send us a message
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="blog" style="position: relative; padding: 5rem 0; background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('dubai3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; overflow: hidden;">
+    <div class="container" style="position: relative; z-index: 2;">
+
+        <div class="text-center mb-5 reveal">
+            <span class="section-eyebrow">Insights &amp; Intelligence</span>
+            <h2 class="section-heading">The UAE Business Knowledge Hub</h2>
+            <div class="section-divider"></div>
+            <p class="text-muted mx-auto" style="max-width:560px; font-size:0.98rem; line-height:1.75;">
+                Real-time regulatory updates, breaking business headlines, and live policy changes across the UAE corporate landscape.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="dynamic-news-row">
+            <div class="text-center py-5 loading-spinner-wrapper">
+                <div class="spinner-border text-primary" role="status" style="color: #2251A3 !important;">
+                    <span class="visually-hidden">Loading latest UAE news...</span>
+                </div>
+                <p class="text-muted mt-2" style="font-size: 0.9rem;">Fetching live market intelligence...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="bg-white">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <span class="section-eyebrow">Get In Touch</span>
+            <h2 class="section-heading">Book Your Free<br />Strategy Consultation</h2>
+            <div class="section-divider"></div>
+            <p class="text-muted mx-auto" style="max-width:540px; font-size:0.98rem; line-height:1.75;">
+                Ready to establish your UAE presence? Our advisors are standing by to map out your optimal corporate structure — at no cost.
+            </p>
+        </div>
+
+        <div class="row g-5 align-items-start">
+            <div class="col-lg-5 reveal">
+                <h3 style="font-family:var(--font-display); font-size:1.5rem; font-weight:700; color:var(--blue); margin-bottom:2rem;">Our Dubai Office</h3>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+                    <div>
+                        <div class="contact-label">Phone &amp; WhatsApp</div>
+                        <div class="contact-value"><a href="https://wa.me/971547775023" target ="_blank">+971 54 777 5023</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                    <div>
+                        <div class="contact-label">Email Address</div>
+                        <div class="contact-value"><a href="mailto:info@beaconuae.com">info@beaconuae.com</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                    <div>
+                        <div class="contact-label">Office Address</div>
+                        <div class="contact-value">Al Amal Street,<br />International Business Tower,<br />Business Bay, Dubai UAE</div>
+                    </div>
+                </div>
+
+                <div style="background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.4rem; box-shadow:var(--shadow);">
+                    <div style="font-weight:700; color:var(--blue); font-size:0.88rem; text-transform:uppercase; margin-bottom:0.8rem;">
+                        <i class="bi bi-clock-fill me-2" style="color:var(--orange);"></i>Office Hours
+                    </div>
+                    <div style="font-size:0.9rem; color:var(--charcoal);">
+                        <div class="d-flex justify-content-between mb-1"><span>Monday – Friday</span><span style="font-weight:600;">9:00 AM – 6:00 PM</span></div>
+                        <div class="d-flex justify-content-between"><span>Saturday</span><span style="font-weight:600;" class="text-muted">Closed</span></div>
+                        <div class="d-flex justify-content-between"><span>Sunday</span><span style="font-weight:600;" class="text-muted">Closed</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 reveal delay-2">
+                <div class="contact-form-wrapper">
+                    <h4 style="font-family:var(--font-display); font-size:1.35rem; font-weight:700; color:var(--blue); margin-bottom:1.8rem;">Tell Us About Your Business Goals</h4>
+                    <form id="consultationForm" novalidate>
+                        <div class="row g-3 mb-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label-beacon">Full Name <span class="text-orange">*</span></label>
+                                <input type="text" id="firstName" name="firstName" class="form-control-beacon" placeholder="e.g. Justin" required />
+                            </div>
+                            <!--<div class="col-sm-6">
+                                <label for="lastName" class="form-label-beacon">Last Name <span class="text-orange">*</span></label>
+                                <input type="text" id="lastName" name="lastName" class="form-control-beacon" placeholder="e.g. Diango" required />
+                            </div>-->
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label-beacon">Phone Number <span class="text-orange">*</span></label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control-beacon" placeholder="e.g. +971 123 456 7890" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label-beacon">E-mail Address <span class="text-orange">*</span></label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control-beacon" placeholder="leah@beaconuae.com" required />
+                        </div>
+                        <div class="mb-4">
+                            <label for="requirements" class="form-label-beacon">What kind of business are you planning to set up in the UAE? <span class="text-orange">*</span></label>
+                            <textarea id="requirements" name="requirements" class="form-control-beacon" placeholder="Tell us about your business structure..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-beacon-blue w-100" style="padding:0.95rem;"><i class="bi bi send-fill me-2"></i>Contact Us</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer" style="background: #0d1f4a; color: #ffffff; padding: 1rem 0 0.75rem 0; font-size: 0.8rem; line-height: 1.4;">
+    <div class="container">
+        <div class="row align-items-center g-1 text-start">
+            <div class="col-md-5">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="beaconlogo.png" style="height: 95px; width: auto;" alt="Beacon Logo">
+                    <div>
+                        <div class="footer-brand-text fw-bold text-white" style="font-size: 0.95rem; letter-spacing: 0.3px; line-height: 1.2; margin-bottom: 2px;">Al Manal BEACON LLC</div>
+                        <span style="font-size: 0.75rem; color: #cbd5e1; display: block; letter-spacing: 0.2px;">UAE Corporate Services since 2014</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 text-md-end text-start mt-2 mt-md-0" style="font-size: 0.82rem; letter-spacing: 0.2px; line-height: 1.5;">
+                <div>
+                    <span class="text-orange fw-bold me-1" style="font-size: 0.75rem; letter-spacing: 0.8px;">DUBAI OFFICE:</span>
+                    <span class="text-white-50"><i class="bi bi-geo-alt-fill text-orange me-1"></i>1006 International Business Tower, Business Bay, Dubai UAE</span>
+                </div>
+                <div class="mt-0">
+                    <i class="bi bi-telephone-fill text-orange me-1"></i><a href="tel:+971547775023" class="text-white fw-semibold text-decoration-none" style="letter-spacing: 0.5px;">+971 54 777 5023</a>
+                    <span class="mx-2 text-white-50" style="opacity: 0.3;">|</span>
+                    <i class="bi bi-envelope-fill text-orange me-1"></i><a href="mailto:info@beaconuae.com" class="text-white-50 text-decoration-none" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">info@beaconuae.com</a>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border-top: 1px solid rgba(255,255,255,0.12); margin: 4px 0;">
+
+        <div class="row align-items-center g-2" style="font-size: 0.78rem;">
+            <div class="col-md-7 text-start">
+                <div class="d-flex flex-wrap gap-2 align-items-center" style="letter-spacing: 0.3px;">
+                    <a href="#services" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Registration</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#services" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Visas</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#services" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Banking</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#packages" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Packages</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#team" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Team</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#partner" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Partners</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#contact" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Contact</a>
+                </div>
+            </div>
+            <div class="col-md-5 text-start text-md-end" style="color: #a1a1aa; letter-spacing: 0.2px;">
+                &copy; 2026 Al Manal BEACON LLC. All rights reserved. Licensed in Dubai, UAE.
+            </div>
+        </div>
+    </div>
+</footer>
+
+</footer>
+
+<div id="aiAgentWidget" class="ai-agent-container">
+    <div class="ai-speech-bubble">
+        <span class="fw-bold text-blue d-block mb-1" style="font-size: 0.8rem;">Hello!</span>
+        Freezone? Mainland? <br>Let's check!
+    </div>
+    <button type="button" class="ai-avatar-btn shadow-lg" data-bs-toggle="modal" data-bs-target="#jurisdictionQuizModal" aria-label="Open Compatibility Quiz">
+        <img src="ceocartoon.png" alt="CEO Tax Assistant Avatar" class="ai-avatar-img" />
+        <span class="ai-online-badge"></span>
+    </button>
+</div>
+
+<div class="modal fade" id="jurisdictionQuizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+            <div class="modal-header bg-blue text-white py-3" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <h5 class="modal-title fw-bold text-white" id="quizModalLabel" style="font-family: var(--font-display); font-size: 1.2rem;">Structure Compatibility Check</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="closeQuizBtn"></button>
+            </div>
+            <div class="modal-body p-4 text-start" id="quizBody">
+                
+                <div class="quiz-step" id="step1">
+                    <span class="text-orange fw-bold text-uppercase d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">Question 1 of 5</span>
+                    <h4 class="fw-bold text-blue mb-3" style="font-size: 1.25rem;">Where will your primary clients or customers be located?</h4>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(1, 'international')">
+                            <i class="bi bi-globe me-2 text-blue"></i> 100% International / Outside the UAE
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(1, 'local')">
+                            <i class="bi bi-geo-alt-fill me-2 text-orange"></i> Locally inside the UAE market (B2C retail, local trading)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-step d-none" id="step2">
+                    <span class="text-orange fw-bold text-uppercase d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">Question 2 of 5</span>
+                    <h4 class="fw-bold text-blue mb-3" style="font-size: 1.25rem;">What is your core business activity?</h4>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(2, 'services')">
+                            <i class="bi bi-laptop me-2 text-blue"></i> Digital Services, Consulting, Tech, or E-commerce
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(2, 'physical')">
+                            <i class="bi bi-truck me-2 text-orange"></i> Physical Warehousing, Heavy Logistics, or Brick-and-Mortar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-step d-none" id="step3">
+                    <span class="text-orange fw-bold text-uppercase d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">Question 3 of 5</span>
+                    <h4 class="fw-bold text-blue mb-3" style="font-size: 1.25rem;">Do you require a physical retail office space outside of freezone clusters?</h4>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(3, 'no')">
+                            <i class="bi bi-x-circle me-2 text-blue"></i> No, a flexible desk or remote setup is perfectly fine
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(3, 'yes')">
+                            <i class="bi bi-check-circle me-2 text-orange"></i> Yes, I need a shop front/office anywhere in Dubai mainland
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-step d-none" id="step4">
+                    <span class="text-orange fw-bold text-uppercase d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">Question 4 of 5</span>
+                    <h4 class="fw-bold text-blue mb-3" style="font-size: 1.25rem;">How many investor, partner, or employee visas do you initially require?</h4>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(4, 'low')">
+                            <i class="bi bi-person-fill me-2 text-blue"></i> 1 to 3 Visas (Perfect for Solo Founders & Small Teams)
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="nextQuizStep(4, 'high')">
+                            <i class="bi bi-people-fill me-2 text-orange"></i> 4+ Visas or Uncapped Scale Requirements
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-step d-none" id="step5">
+                    <span class="text-orange fw-bold text-uppercase d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">Question 5 of 5</span>
+                    <h4 class="fw-bold text-blue mb-3" style="font-size: 1.25rem;">What is your primary corporate banking requirement?</h4>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="calculateQuizResult('tier1')">
+                            <i class="bi bi-shield-check me-2 text-blue"></i> Standard UAE Tier-1 Banks (Meticulous local compliance checks)
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary p-3 text-start quiz-opt" onclick="calculateQuizResult('digital')">
+                            <i class="bi bi-lightning-fill me-2 text-orange"></i> Digital Neo-Banks & Global EMI Accounts (Fast setup, multi-currency)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-step d-none text-center py-3" id="quizResult">
+                    <div id="resultIcon" class="mb-3" style="font-size: 3rem;"></div>
+                    <h3 class="fw-bold text-blue mb-2" id="resultTitle" style="font-family: var(--font-display);"></h3>
+                    <p class="text-muted mb-4" id="resultDesc" style="font-size: 0.95rem; line-height: 1.6;"></p>
+                    
+                    <div class="p-3 bg-light rounded-3 text-start mb-4 border" style="font-size: 0.88rem;">
+                        <strong><i class="bi bi-shield-check text-success me-1"></i> Strategy Note:</strong> While this tool screens basic criteria, banking preferences, visa allocation limits, and specific economic substances can alter the ideal route.
+                    </div>
+                    
+                    <a href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank" class="btn btn-beacon-orange w-100 py-2 fw-bold text-uppercase">
+                        <i class="bi bi-calendar-check-fill me-2"></i> Book a FREE consultation
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ============================================================
+    TAX CORE ENGINE MATHEMATICAL FUNCTIONALITY (MULTI-CURRENCY SYSTEM)
+============================================================ */
+(function () {
+    let currentCurrency = 'EUR';
+
+    const profitSlider = document.getElementById('calcProfitSlider');
+    const profitInput = document.getElementById('calcProfitInput');
+    const countrySelect = document.getElementById('calcCountry');
+    
+    const toggleEUR = document.getElementById('toggleEUR');
+    const toggleUSD = document.getElementById('toggleUSD');
+    
+    const euTaxDisplay = document.getElementById('euTaxDisplay');
+    const uaeTaxDisplay = document.getElementById('uaeTaxDisplay');
+    const savingsDisplay = document.getElementById('savingsDisplay');
+
+    function runTaxCalculations(sourceValue) {
+        const netProfit = parseInt(sourceValue, 10) || 0;
+        const euTaxRate = parseFloat(countrySelect.value);
+
+        const totalEuTax = netProfit * euTaxRate;
+        const taxExemptThreshold = (currentCurrency === 'EUR') ? 95000 : 110000;
+
+        let totalUaeTax = 0;
+        if (netProfit > taxExemptThreshold) {
+            totalUaeTax = (netProfit - taxExemptThreshold) * 0.09;
+        }
+
+        const netSavingsCalculated = totalEuTax - totalUaeTax;
+
+        euTaxDisplay.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 }).format(totalEuTax);
+        uaeTaxDisplay.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 }).format(totalUaeTax);
+        savingsDisplay.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 }).format(netSavingsCalculated);
+    }
+
+    function switchCurrencyMode(targetCurrency) {
+        if (currentCurrency === targetCurrency) return;
+        currentCurrency = targetCurrency;
+
+        if (currentCurrency === 'EUR') {
+            toggleEUR.className = "btn btn-sm w-50 fw-bold rounded-2 btn-beacon-blue";
+            toggleUSD.className = "btn btn-sm w-50 fw-bold rounded-2 text-secondary bg-transparent border-0";
+            document.querySelectorAll('.currency-symbol').forEach(el => el.textContent = '€');
+        } else {
+            toggleUSD.className = "btn btn-sm w-50 fw-bold rounded-2 btn-beacon-blue";
+            toggleEUR.className = "btn btn-sm w-50 fw-bold rounded-2 text-secondary bg-transparent border-0";
+            document.querySelectorAll('.currency-symbol').forEach(el => el.textContent = '$');
+        }
+
+        runTaxCalculations(profitSlider.value);
+    }
+
+    toggleEUR.addEventListener('click', () => switchCurrencyMode('EUR'));
+    toggleUSD.addEventListener('click', () => switchCurrencyMode('USD'));
+
+    profitSlider.addEventListener('input', function() {
+        profitInput.value = this.value;
+        runTaxCalculations(this.value);
+    });
+
+    profitInput.addEventListener('input', function() {
+        let value = parseInt(this.value, 10) || 0;
+        if (value > 2000000) value = 2000000;
+        profitSlider.value = value;
+        runTaxCalculations(value);
+    });
+
+    countrySelect.addEventListener('change', () => runTaxCalculations(profitSlider.value));
+
+    runTaxCalculations(profitSlider.value);
+})();
+
+/* ============================================================
+    DYNAMIC UAE INTELLIGENCE NEWS GENERATOR
+============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const newsRow = document.getElementById("dynamic-news-row");
+    if (!newsRow) return;
+
+    const positiveNewsPool = [
+        {
+            title: "Dubai Real Estate Transactions Surge 31% to Dh252 Billion in Record-Breaking Quarter",
+            category: "Real Estate Boom",
+            icon: "bi-building-up",
+            image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business/property"
+        },
+        {
+            title: "UAE Non-Oil Trade Crosses Historic Milestone, Signaling Massive Economic Stability",
+            category: "Market Growth",
+            icon: "bi-graph-up-arrow",
+            image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business"
+        },
+        {
+            title: "Dubai Real Estate Attracts Over $272 Billion Investment Forecast Over Next 5 Years",
+            category: "Investment Advisory",
+            icon: "bi-cash-coin",
+            image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business/property"
+        },
+        {
+            title: "Dubai Crowned #1 Globally for Greenfield Foreign Direct Investment Projects Yet Again",
+            category: "Corporate Expansion",
+            icon: "bi-briefcase",
+            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business"
+        },
+        {
+            title: "UAE Tech Ecosystem Expands Rapidly as Digital Transformation Infrastructure Approaches $20B",
+            category: "Fintech & Innovation",
+            icon: "bi-cpu",
+            image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business"
+        },
+        {
+            title: "Dubai Hills and Palm Jumeirah Rental Yields Stabilize at High Global Benchmarks up to 8.5%",
+            category: "Real Estate ROI",
+            icon: "bi-house-heart",
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business/property"
+        },
+        {
+            title: "Long-Term Residents Fuel Stability: Over 150,000 Golden Visa Holders Drive the Economy",
+            category: "Market Maturity",
+            icon: "bi-shield-check",
+            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business"
+        },
+        {
+            title: "Emaar Announces Monumental Dh200 Billion Expansion Project in the Heart of Dubai",
+            category: "Mega Developments",
+            icon: "bi-lightning-charge",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80",
+            link: "https://gulfnews.com/business/property"
+        }
+    ];
+
+    function shuffleAndSelect(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array.slice(0, 3);
+    }
+
+    const randomArticles = shuffleAndSelect([...positiveNewsPool]);
+    newsRow.innerHTML = "";
+
+    randomArticles.forEach((article) => {
+        const cardHtml = `
+            <div class="col-md-6 col-lg-4">
+                <div class="blog-card h-100 d-flex flex-column" 
+                     onclick="window.open('${article.link}', '_blank')"
+                     style="border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.01); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    
+                    <div class="news-image-container" style="height:190px; overflow:hidden; width:100%; background-color:#eaeaea;">
+                        <img src="${article.image}" alt="${article.title}" style="width:100%; height:100%; object-fit:cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+
+                    <div class="blog-body d-flex flex-column flex-grow-1 p-4" style="justify-content: space-between;">
+                        <div>
+                            <div class="blog-category" style="font-size: 0.8rem; text-transform: uppercase; font-weight: bold; margin-bottom: 8px; color: #2251A3;">
+                                <i class="bi ${article.icon} me-1"></i>${article.category}
+                            </div>
+                            <div class="blog-title" style="font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: 0; color: #111;">
+                                ${article.title}
+                            </div>
+                        </div>
+                        <div class="blog-meta d-flex align-items-center justify-content-between" style="border-top: 1px solid #f2f2f2; padding-top: 14px; margin-top: 25px;">
+                            <span class="text-muted" style="font-size: 0.8rem;"><i class="bi bi-clock me-1"></i> Live Update</span>
+                            <span class="fw-semibold" style="font-size:0.85rem; color: #DF8627;">Read Article →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        newsRow.innerHTML += cardHtml;
+    });
+});
+
+/* ============================================================
+    VERIFIED GOOGLE REVIEWS INJECTOR ENGINE
+============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const reviewsContainer = document.getElementById("google-reviews-container");
+    if (!reviewsContainer) return;
+
+    const verifiedGoogleReviews = [
+        {
+            name: "Enikő Eged",
+            initials: "EE",
+            avatarBg: "#2251A3",
+            role: "Local Guide • Verified Review",
+            text: "I started my business with the help of this great company, and I'm truly grateful to have such supportive people around me. Everyone is kind, patient, and responsive, and I always feel comfortable asking one more question. They are always happy to help. I highly recommend them!"
+        },
+        {
+            name: "Patricia Koncz",
+            initials: "PK",
+            avatarBg: "#E39238",
+            role: "Local Guide • Verified Review",
+            text: "I had an outstanding experience with Beacon. From start to finish, their team was professional, knowledgeable, and incredibly friendly. They guided me through every step of the company formation process..."
+        },
+        {
+            name: "Nicoleta Gherman",
+            initials: "NG",
+            avatarBg: "#1a3d7c",
+            role: "Verified Business Owner",
+            text: "The best agency if you want to open a business in Dubai! I worked with Kinga and her team and they are amazing! Very professional, responsive, helpful and reliable. They explain everything clearly and find solutions for any situation. Highly recommend!"
+        }
+    ];
+
+    reviewsContainer.innerHTML = "";
+
+    verifiedGoogleReviews.forEach((review) => {
+        const reviewHtml = `
+            <div class="col-md-6 col-lg-4">
+                <div class="review-card d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div style="color: #FFB356; font-size: 0.9rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <i class="bi bi-google" style="color: #4285F4; font-size: 1.1rem;"></i>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #555555; line-height: 1.5; font-style: italic; margin-bottom: 1.5rem;">
+                            "${review.text}"
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 pt-3" style="border-top: 1px solid #f7f7f7;">
+                        <div style="width: 38px; height: 38px; background: ${review.avatarBg}; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">
+                            ${review.initials}
+                        </div>
+                        <div>
+                            <h5 style="font-size: 0.9rem; font-weight: 700; color: #2251A3; margin: 0;">${review.name}</h5>
+                            <span style="font-size: 0.75rem; color: #999999; display: block;">${review.role}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        reviewsContainer.innerHTML += reviewHtml;
+    });
+});
+
+/* ============================================================
+    BOOTSTRAP LAYOUT UI EVENT HANDLING
+============================================================ */
+(function () {
+    const nav = document.getElementById('mainNav');
+    function updateNav() {
+        if (window.scrollY > 80) {
+            nav.classList.add('nav-scrolled');
+            nav.classList.remove('nav-transparent');
+        } else {
+            nav.classList.remove('nav-scrolled');
+            nav.classList.add('nav-transparent');
+        }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+})();
+
+(function () {
+    const aiAgent = document.getElementById('aiAgentWidget');
+    if (!aiAgent) return;
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 350) {
+            aiAgent.classList.add('show');
+        } else {
+            aiAgent.classList.remove('show');
+        }
+    }, { passive: true });
+})();
+
+(function () {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+    });
+});
+
+/* ============================================================
+    FREEZONE VS MAINLAND SMART SCREENING SYSTEM (5-STEP ENGINE)
+============================================================ */
+let quizAnswers = { step1: '', step2: '', step3: '', step4: '', step5: '' };
+
+function nextQuizStep(currentStep, answer) {
+    quizAnswers['step' + currentStep] = answer;
+    document.getElementById('step' + currentStep).classList.add('d-none');
+    document.getElementById('step' + (currentStep + 1)).classList.remove('d-none');
+}
+
+function calculateQuizResult(step5Answer) {
+    quizAnswers.step5 = step5Answer;
+    document.getElementById('step5').classList.add('d-none');
+    
+    const resultSection = document.getElementById('quizResult');
+    const rIcon = document.getElementById('resultIcon');
+    const rTitle = document.getElementById('resultTitle');
+    const rDesc = document.getElementById('resultDesc');
+    
+    resultSection.classList.remove('d-none');
+    
+    if (quizAnswers.step1 === 'local' || quizAnswers.step3 === 'yes' || quizAnswers.step4 === 'high') {
+        rIcon.innerHTML = '<i class="bi bi-building-fill text-orange"></i>';
+        rTitle.textContent = "Your Match: UAE Mainland";
+        rDesc.textContent = "Because you plan to conduct business directly inside local markets, require storefront spaces, or demand high-volume employee visa quotes, an economic Mainland license under DED jurisdiction is your strongest layout path to maximize target scale smoothly.";
+    } else {
+        rIcon.innerHTML = '<i class="bi bi-pie-chart-fill text-success"></i>';
+        rTitle.textContent = "Your Match: UAE Freezone";
+        rDesc.textContent = "Excellent setup blueprint! Since your target footprint is international/digital, your team scaling needs are agile, and you prefer optimized setup speed, you match perfectly with a Freezone ecosystem. This layout guarantees simple 100% corporate ownership and rapid banking configurations.";
+    }
+}
+
+document.getElementById('jurisdictionQuizModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('step1').classList.remove('d-none');
+    document.getElementById('step2').classList.add('d-none');
+    document.getElementById('step3').classList.add('d-none');
+    document.getElementById('step4').classList.add('d-none');
+    document.getElementById('step5').classList.add('d-none');
+    document.getElementById('quizResult').classList.add('d-none');
+    quizAnswers = { step1: '', step2: '', step3: '', step4: '', step5: '' };
+});
+</script>
+
+</body>
+</html>
