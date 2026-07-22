@@ -183,28 +183,6 @@
             gap: 0.6rem;
         }
 
-        .logo-placeholder {
-            height: 44px;
-            width: 160px;
-            background: linear-gradient(135deg, var(--blue) 0%, #3566c9 100%);
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-family: var(--font-body);
-            font-weight: 800;
-            font-size: 0.8rem;
-            letter-spacing: 0.04em;
-            padding: 0 1rem;
-            white-space: nowrap;
-            border: 2px dashed rgba(255,255,255,0.5);
-        }
-
-        #mainNav.nav-scrolled .logo-placeholder {
-            background: linear-gradient(135deg, var(--blue) 0%, #3566c9 100%);
-        }
-
         .nav-link-beacon {
             font-weight: 600;
             font-size: 0.88rem;
@@ -269,34 +247,32 @@
             display: flex;
             align-items: center;
             position: relative;
-            padding: 8rem 0 5rem;
+            padding: 100px 0 50px 0;
+            overflow: hidden;
         }
 
         .hero-title {
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: 2.5rem;
+            line-height: 1.2;
             font-weight: 800;
             color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title .accent-word {
-            color: var(--orange);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
         .hero-subtitle {
-            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 2rem;
-            font-weight: 300;
+            font-size: 1.05rem;
+            color: #ffffff !important;
+            font-weight: 500;
+            line-height: 1.6;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
         }
 
         /* Calculator Styles */
         .calc-container {
-            background: rgba(255, 255, 255, 0.98);
+            background: #ffffff;
             border-radius: 20px;
             padding: 2.2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
             color: var(--charcoal);
         }
 
@@ -308,7 +284,7 @@
         }
 
         .metric-title {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -316,7 +292,7 @@
         }
 
         .metric-value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
             line-height: 1.2;
         }
@@ -327,7 +303,7 @@
         .savings-banner {
             background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
             color: var(--white);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 1rem;
             text-align: center;
         }
@@ -578,103 +554,93 @@
         }
 
         /* ============================================================
-   FLOATING AI AGENT WIDGET DESIGN TOKENS
-============================================================ */
-.ai-agent-container {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1050; /* Placed over your background blocks */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    pointer-events: none;
-}
+           FLOATING AI AGENT WIDGET DESIGN TOKENS
+        ============================================================ */
+        .ai-agent-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            pointer-events: none;
+        }
 
-/* Fades in smoothly once window scrolls past 350px */
-.ai-agent-container.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
+        .ai-agent-container.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-/* Custom Speech Bubble Box Layout */
-.ai-speech-bubble {
-    background: #ffffff;
-    color: var(--charcoal);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    border-bottom-right-radius: 4px;
-    padding: 10px 14px;
-    font-size: 0.82rem;
-    line-height: 1.4;
-    max-width: 200px;
-    text-align: left;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    animation: floatBubbleUpAndDown 3s infinite ease-in-out;
-}
+        .ai-speech-bubble {
+            background: #ffffff;
+            color: var(--charcoal);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            border-bottom-right-radius: 4px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            line-height: 1.4;
+            max-width: 200px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
 
-/* Little tail arrow pointing to the avatar button */
-.ai-speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    right: 24px;
-    width: 12px;
-    height: 12px;
-    background: #ffffff;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    transform: rotate(45deg);
-}
+        .ai-speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 24px;
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transform: rotate(45deg);
+        }
 
-/* Rounded CEO Avatar Trigger Layout */
-/* Transparent Avatar Wrapper — No borders, no circles, completely clean */
-.ai-avatar-btn {
-    width: 150px;
-    height: auto;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    position: relative;
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .ai-avatar-btn {
+            width: 150px;
+            height: auto;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-/* Hover tilt effect remains intact on the illustration */
-.ai-avatar-btn:hover {
-    transform: scale(1.1) rotate(4deg);
-}
+        .ai-avatar-btn:hover {
+            transform: scale(1.1) rotate(4deg);
+        }
 
-/* Forces the portrait graphic to render natively */
-.ai-avatar-img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+        .ai-avatar-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
 
-/* Adjust the online badge positioning slightly to fit a raw photo outline */
-.ai-online-badge {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 14px;
-    height: 14px;
-    background-color: #10b981;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
+        .ai-online-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 14px;
+            height: 14px;
+            background-color: #10b981;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 
@@ -703,6 +669,7 @@
 </nav>
 
 <!-- Hero Header Section -->
+<!-- Hero Header Section (Frosted Glass Calculator) -->
 <header id="hero" style="position: relative; padding: 100px 0 50px 0; overflow: hidden; min-height: 100vh; display: flex; align-items: center;">
     
     <!-- Top Floating Logo -->
@@ -710,7 +677,7 @@
         <img src="beaconlogo.png" alt="Al Manal BEACON LLC" style="height: 220px; width: auto; pointer-events: auto;" />
     </div>
 
-    <!-- CEO Cutout Graphic (Position Untouched) -->
+    <!-- CEO Cutout Graphic (Position Anchored: left: 110px) -->
     <img src="kingahero.png" alt="Kinga Hero" class="d-none d-lg-block" style="
         position: absolute; 
         bottom: -20px; 
@@ -755,7 +722,7 @@
                 </div>
             </div>
 
-            <!-- 3. Real-Time Tax Calculator Column (True Translucent Frosted Glass) -->
+            <!-- 3. Real-Time Tax Calculator Column (Frosted Glass Card) -->
             <div class="col-lg-4 my-auto">
                 <div class="calc-container p-3 p-md-4 rounded-4 position-relative" style="
                     max-width: 480px; 
@@ -859,83 +826,6 @@
     </div>
 </header>
 
-<!-- JavaScript Engine -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const calcCountry = document.getElementById("calcCountry");
-    const calcProfitInput = document.getElementById("calcProfitInput");
-    const calcProfitSlider = document.getElementById("calcProfitSlider");
-    const foreignTaxTitle = document.getElementById("foreignTaxTitle");
-    const euTaxDisplay = document.getElementById("euTaxDisplay");
-    const uaeTaxDisplay = document.getElementById("uaeTaxDisplay");
-    const savingsDisplay = document.getElementById("savingsDisplay");
-    const calcExplanation = document.getElementById("calcExplanation");
-    
-    const foreignTaxBadge = document.getElementById("foreignTaxBadge");
-    const uaeTaxBadge = document.getElementById("uaeTaxBadge");
-
-    const EUR_RATE = 3.95;
-
-    function renderFormattedValue(val) {
-        return "€" + Math.round(val).toLocaleString();
-    }
-
-    function computeEngine() {
-        let revenueProfit = parseFloat(calcProfitInput.value) || 0;
-        if (revenueProfit <= 0) revenueProfit = 1;
-
-        const targetOption = calcCountry.options[calcCountry.selectedIndex];
-        const nominalTaxRate = parseFloat(targetOption.value);
-        const corporateRegion = targetOption.getAttribute("data-region");
-
-        if (corporateRegion === "UK") {
-            foreignTaxTitle.textContent = "UK Tax Cost";
-        } else {
-            foreignTaxTitle.textContent = "EU Tax Cost";
-        }
-
-        const foreignTotalLiability = revenueProfit * nominalTaxRate;
-        const foreignEffectivePercentage = (foreignTotalLiability / revenueProfit) * 100;
-
-        const profitConvertedToAED = revenueProfit * EUR_RATE;
-        
-        let localTaxLiabilityInAED = 0;
-        if (profitConvertedToAED > 375000) {
-            localTaxLiabilityInAED = (profitConvertedToAED - 375000) * 0.09;
-        }
-        
-        const localUaeTaxCost = localTaxLiabilityInAED / EUR_RATE;
-        const uaeEffectivePercentage = (localUaeTaxCost / revenueProfit) * 100;
-
-        const optimizationSpread = foreignTotalLiability - localUaeTaxCost;
-
-        euTaxDisplay.textContent = renderFormattedValue(foreignTotalLiability);
-        uaeTaxDisplay.textContent = renderFormattedValue(localUaeTaxCost);
-        savingsDisplay.textContent = renderFormattedValue(Math.max(0, optimizationSpread));
-
-        if (foreignTaxBadge) foreignTaxBadge.textContent = `${foreignEffectivePercentage.toFixed(1)}% Effective`;
-        if (uaeTaxBadge) uaeTaxBadge.textContent = `${uaeEffectivePercentage.toFixed(1)}% Effective`;
-
-        const localThresholdEquivalence = Math.round(375000 / EUR_RATE);
-        calcExplanation.textContent = `Leveraging the UAE's 0% tax bracket on your first ${renderFormattedValue(localThresholdEquivalence)} of profit. Remaining profit is taxed at just 9%.`;
-    }
-
-    calcProfitSlider.addEventListener("input", function () {
-        calcProfitInput.value = this.value;
-        computeEngine();
-    });
-
-    calcProfitInput.addEventListener("input", function () {
-        calcProfitSlider.value = this.value;
-        computeEngine();
-    });
-
-    calcCountry.addEventListener("change", computeEngine);
-
-    computeEngine();
-});
-</script>
-
 <section id="about-us" class="bg-white" style="padding: 5rem 0;">
     <div class="container">
         <div class="row align-items-center g-5">
@@ -1005,12 +895,10 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
 
         <div class="marquee-wrapper mt-5 pt-4" style="overflow: hidden; user-select: none; width: 100%; position: relative;">
-    
             <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 15%; z-index: 2; pointer-events: none; background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%);"></div>
             <div style="position: absolute; top: 0; bottom: 0; right: 0; width: 15%; z-index: 2; pointer-events: none; background: linear-gradient(to left, #ffffff 0%, rgba(255,255,255,0) 100%);"></div>
 
             <div class="marquee-track" style="display: flex; width: max-content;">
-                
                 <div class="marquee-group">
                     <a href="https://rakez.com/" target="_blank" rel="noopener noreferrer"><img src="p1.jpg" alt="RAKEZ" style="height: 60px;"></a>
                     <a href="https://dubaisouth.ae/" target="_blank" rel="noopener noreferrer"><img src="p2.png" alt="Dubai South" style="height: 65px;"></a>
@@ -1044,7 +932,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <a href="https://www.kizad.ae/" target="_blank" rel="noopener noreferrer"><img src="p13.JPG" alt="KIZAD" style="height: 60px;"></a>
                     <a href="https://www.twofour54.com/" target="_blank" rel="noopener noreferrer"><img src="p14.PNG" alt="twofour54" style="height: 60px;"></a>
                 </div>
-                
             </div>
         </div>
 
@@ -1240,19 +1127,14 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="section-eyebrow">Specialized Packages</span>
             <h2 class="section-heading">Structured Solutions for<br />Every Business Profile</h2>
             <div class="section-divider"></div>
-            <!--<button type="button" class="btn btn-beacon-orange animate-pulse" data-bs-toggle="modal" data-bs-target="#jurisdictionQuizModal" style="background-color: var(--orange); border: 2px solid var(--orange); color: var(--white);">
-                <i class="bi bi-question-circle-fill me-2"></i>Freezone? Mainland? Where do I qualify?
-            </button>-->
         </div>
 
-        <!-- Centered row with slightly larger columns (col-lg-5) -->
         <div class="row g-4 mb-5 justify-content-center">
-    
             <div class="col-lg-5 reveal delay-1">
                 <div class="pkg-card">
                     <img src="skyline.png" alt="Mainland Company Package" class="img-fluid" style="height:200px; object-fit:cover; width:100%; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
                     <div class="pkg-body">
-                    <div class="pkg-title">Mainland Company Package</div>
+                        <div class="pkg-title">Mainland Company Package</div>
                         <p class="pkg-desc">Not eligible for a free zone? We provide affordable mainland company setup solutions across the UAE, with reliable sponsorship and customized packages.</p>
                         <div class="pkg-footer text-center d-flex justify-content-center pt-2">
                             <a href="https://wa.me/971547775023?text=Hello,%20I%20am%20interested%20in%20the%20Mainland%20Company%20Package." 
@@ -1270,10 +1152,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="pkg-card">
                     <div style="position: relative; width: 100%;">
                         <span class="pkg-badge" style="z-index: 2;">Save up to 50%</span>
-                            <img src="business.png" alt="Multiple Years Package" class="img-fluid" style="height:200px; object-fit:cover; width:100%; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
+                        <img src="business.png" alt="Multiple Years Package" class="img-fluid" style="height:200px; object-fit:cover; width:100%; border-top-left-radius: 8px; border-top-right-radius: 8px;" />
                     </div>
                     <div class="pkg-body">
-                <div class="pkg-title">Freezone Company Package</div>
+                        <div class="pkg-title">Freezone Company Package</div>
                         <p class="pkg-desc">Save up to 50% and avoid annual renewals with a multi-year business license—an ideal solution for startups.</p>
                         <div class="pkg-footer text-center d-flex justify-content-center pt-2">
                             <a href="https://wa.me/971547775023?text=Hello,%20I%20am%20interested%20in%20the%20Multiple%20Years%20Company%20Package." 
@@ -1289,95 +1171,94 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
 
         <div class="process-timeline-wrapper" style="padding-top: 4.5rem; border-top: 1px solid rgba(0,0,0,0.06);">
-    
-        <style>
-            .process-step-node {
-                cursor: pointer;
-            }
-            .step-icon-circle {
-                transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), 
-                            border-color 0.3s ease, 
-                            box-shadow 0.3s ease !important;
-            }
-            .process-step-node:hover .step-icon-circle {
-                transform: translateY(-5px) scale(1.05);
-                border-color: var(--orange) !important;
-                box-shadow: 0 8px 24px rgba(223, 134, 39, 0.25) !important;
-            }
-            .process-step-node:hover .step-icon-circle i {
-                color: var(--orange) !important;
-                transition: color 0.3s ease;
-            }
-        </style>
+            <style>
+                .process-step-node {
+                    cursor: pointer;
+                }
+                .step-icon-circle {
+                    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                                border-color 0.3s ease, 
+                                box-shadow 0.3s ease !important;
+                }
+                .process-step-node:hover .step-icon-circle {
+                    transform: translateY(-5px) scale(1.05);
+                    border-color: var(--orange) !important;
+                    box-shadow: 0 8px 24px rgba(223, 134, 39, 0.25) !important;
+                }
+                .process-step-node:hover .step-icon-circle i {
+                    color: var(--orange) !important;
+                    transition: color 0.3s ease;
+                }
+            </style>
 
-        <div class="text-center mb-5 reveal">
-            <span class="section-eyebrow" style="color: #c27803;">How it Works</span>
-            <div class="section-divider" style="background: #c27803; width: 50px; height: 3px; margin: 15px auto;"></div>
-        </div>
+            <div class="text-center mb-5 reveal">
+                <span class="section-eyebrow" style="color: #c27803;">How it Works</span>
+                <div class="section-divider" style="background: #c27803; width: 50px; height: 3px; margin: 15px auto;"></div>
+            </div>
 
-        <div class="position-relative mx-auto" style="max-width: 1140px;">
-            <div class="d-none d-lg-block position-absolute" style="top: 35px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, #e2ecdb, #b9d1f3, #e5e7eb); z-index: 1;"></div>
-            <div class="row g-4 position-relative" style="z-index: 2;">
-                
-                <div class="col-md-6 col-lg-2-4 text-center reveal">
-                    <div class="process-step-node">
-                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                            <i class="bi bi-telephone-inbound" style="color: #1e429f; font-size: 1.6rem;"></i>
+            <div class="position-relative mx-auto" style="max-width: 1140px;">
+                <div class="d-none d-lg-block position-absolute" style="top: 35px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, #e2ecdb, #b9d1f3, #e5e7eb); z-index: 1;"></div>
+                <div class="row g-4 position-relative" style="z-index: 2;">
+                    
+                    <div class="col-md-6 col-lg-2-4 text-center reveal">
+                        <div class="process-step-node">
+                            <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                                <i class="bi bi-telephone-inbound" style="color: #1e429f; font-size: 1.6rem;"></i>
+                            </div>
+                            <h5 style="font-size: 1rem; font-weight: 700;">Free Consultation</h5>
+                            <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We discuss your specific business goals and match you with the ideal UAE corporate solution.</p>
                         </div>
-                        <h5 style="font-size: 1rem; font-weight: 700;">Free Consultation</h5>
-                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We discuss your specific business goals and match you with the ideal UAE corporate solution.</p>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-lg-2-4 text-center reveal delay-1">
-                    <div class="process-step-node">
-                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                            <i class="bi bi-person-check" style="color: #1e429f; font-size: 1.6rem;"></i>
+                    <div class="col-md-6 col-lg-2-4 text-center reveal delay-1">
+                        <div class="process-step-node">
+                            <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                                <i class="bi bi-person-check" style="color: #1e429f; font-size: 1.6rem;"></i>
+                            </div>
+                            <h5 style="font-size: 1rem; font-weight: 700;">Onboarding</h5>
+                            <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">Provide us with your basic structural documents, and our setup team launches the process immediately.</p>
                         </div>
-                        <h5 style="font-size: 1rem; font-weight: 700;">Onboarding</h5>
-                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">Provide us with your basic structural documents, and our setup team launches the process immediately.</p>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-lg-2-4 text-center reveal delay-2">
-                    <div class="process-step-node">
-                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                            <i class="bi bi-file-earmark-text" style="color: #1e429f; font-size: 1.6rem;"></i>
+                    <div class="col-md-6 col-lg-2-4 text-center reveal delay-2">
+                        <div class="process-step-node">
+                            <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                                <i class="bi bi-file-earmark-text" style="color: #1e429f; font-size: 1.6rem;"></i>
+                            </div>
+                            <h5 style="font-size: 1rem; font-weight: 700;">License Issuance</h5>
+                            <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We handle the local registry paperwork. Your official company trade license is issued within a week.</p>
                         </div>
-                        <h5 style="font-size: 1rem; font-weight: 700;">License Issuance</h5>
-                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We handle the local registry paperwork. Your official company trade license is issued within a week.</p>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-lg-2-4 text-center reveal delay-3">
-                    <div class="process-step-node">
-                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                            <i class="bi bi-passport" style="color: #1e429f; font-size: 1.6rem;"></i>
+                    <div class="col-md-6 col-lg-2-4 text-center reveal delay-3">
+                        <div class="process-step-node">
+                            <div class="step-icon-circle" style="background: #fff; border: 3px solid #1e429f; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                                <i class="bi bi-passport" style="color: #1e429f; font-size: 1.6rem;"></i>
+                            </div>
+                            <h5 style="font-size: 1rem; font-weight: 700;">Visa Processing</h5>
+                            <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We coordinate your physical arrival window to complete required local medicals and residency biometrics.</p>
                         </div>
-                        <h5 style="font-size: 1rem; font-weight: 700;">Visa Processing</h5>
-                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">We coordinate your physical arrival window to complete required local medicals and residency biometrics.</p>
                     </div>
-                </div>
 
-                <div class="col-md-6 col-lg-2-4 text-center reveal delay-4">
-                    <div class="process-step-node">
-                        <div class="step-icon-circle" style="background: #fff; border: 3px solid #c27803; box-shadow: 0 4px 15px rgba(194,120,3,0.15); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
-                            <i class="bi bi-bank" style="color: #c27803; font-size: 1.6rem;"></i>
+                    <div class="col-md-6 col-lg-2-4 text-center reveal delay-4">
+                        <div class="process-step-node">
+                            <div class="step-icon-circle" style="background: #fff; border: 3px solid #c27803; box-shadow: 0 4px 15px rgba(194,120,3,0.15); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                                <i class="bi bi-bank" style="color: #c27803; font-size: 1.6rem;"></i>
+                            </div>
+                            <h5 style="font-size: 1rem; font-weight: 700; color: #c27803;">Bank Account Setup</h5>
+                            <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">Our advisors fully manage corporate compliance files to secure your primary corporate banking facilities.</p>
                         </div>
-                        <h5 style="font-size: 1rem; font-weight: 700; color: #c27803;">Bank Account Setup</h5>
-                        <p style="font-size: 0.85rem; color: #5a6470; line-height: 1.5;">Our advisors fully manage corporate compliance files to secure your primary corporate banking facilities.</p>
                     </div>
-                </div>
 
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 reveal delay-4">
+                <a href="#contact" class="btn btn-beacon-orange" style="padding: 0.75rem 2.5rem; display: inline-block; border-radius: 50px;">
+                    Book a Free Consultation <i class="bi bi-calendar-event ms-2"></i>
+                </a>
             </div>
         </div>
-        
-        <div class="text-center mt-5 reveal delay-4">
-            <a href="#contact" class="btn btn-beacon-orange" style="padding: 0.75rem 2.5rem; display: inline-block; border-radius: 50px;">
-                Book a Free Consultation <i class="bi bi-calendar-event ms-2"></i>
-            </a>
-        </div>
-    </div>
     </div>
 </section>
 
@@ -1445,7 +1326,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <div class="team-name">Leah Camacho</div>
                                     <div class="team-role">Office Manager</div>
                                     <p class="team-bio mt-2 mb-0">Leah excels in accuracy and efficiency, ensuring tasks are completed smoothly and on time. She adeptly juggles serious account management while delighting clients with her cheerful approach.</p>
-                                }</div>
+                                </div>
                                 <div class="team-social mt-3">
                                     <a href="https://www.linkedin.com/in/leah-camacho-20413618b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                                     <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
@@ -1518,139 +1399,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-
-                <div class="marquee-card-wrapper" aria-hidden="true">
-                    <div class="team-card h-100" style="overflow: hidden;">
-                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
-                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #000;">
-                                <img src="kinga.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;" />
-                            </div>
-                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
-                                <div>
-                                    <div class="team-name">Kinga Szabo</div>
-                                    <div class="team-role">Founder &amp; CEO</div>
-                                    <p class="team-bio mt-2 mb-0">She is the soul and mind of the company. With more than two decades of experience in the business world, this Oxford graduate expert can see beyond the walls of common misconceptions and find new horizons where the possibilities are infinite.</p>
-                                </div>
-                                <div class="team-social mt-3">
-                                    <a href="https://www.linkedin.com/in/kinga-judit-szabo-b494282a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="marquee-card-wrapper" aria-hidden="true">
-                    <div class="team-card h-100" style="overflow: hidden;">
-                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
-                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
-                                <img src="peter.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
-                            </div>
-                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
-                                <div>
-                                    <div class="team-name">Peter Toth</div>
-                                    <div class="team-role">Chief Service Officer</div>
-                                    <p class="team-bio mt-2 mb-0">When a job requires experience and reliability, Peter is the best man for it. He can focus on targets and get things done, no matter the barriers or obstacles that appear in the way, and is always willing to help his team.</p>
-                                </div>
-                                <div class="team-social mt-3">
-                                    <a href="https://www.linkedin.com/in/peter-toth-33649679/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="marquee-card-wrapper" aria-hidden="true">
-                    <div class="team-card h-100" style="overflow: hidden;">
-                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
-                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
-                                <img src="leah.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 90%; display: block;" />
-                            </div>
-                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
-                                <div>
-                                    <div class="team-name">Leah Camacho</div>
-                                    <div class="team-role">Office Manager</div>
-                                    <p class="team-bio mt-2 mb-0">Leah excels in accuracy and efficiency, ensuring tasks are completed smoothly and on time. She adeptly juggles serious account management while delighting clients with her cheerful approach.</p>
-                                </div>
-                                <div class="team-social mt-3">
-                                    <a href="https://www.linkedin.com/in/leah-camacho-20413618b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="marquee-card-wrapper" aria-hidden="true">
-                    <div class="team-card h-100" style="overflow: hidden;">
-                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
-                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
-                                <img src="christine.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;" />
-                            </div>
-                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
-                                <div>
-                                    <div class="team-name">Christina Da Silva</div>
-                                    <div class="team-role">Client Relationship Manager</div>
-                                    <p class="team-bio mt-2 mb-0">Christine brings a wealth of expertise to her role as a Customer Relationship Manager, specializing in high-level account management and meticulous legal documentation.</p>
-                                </div>
-                                <div class="team-social mt-3">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="marquee-card-wrapper" aria-hidden="true">
-                    <div class="team-card h-100" style="overflow: hidden;">
-                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
-                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
-                                <img src="sherry.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block;" />
-                            </div>
-                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
-                                <div>
-                                    <div class="team-name">Sherry Cagara</div>
-                                    <div class="team-role">Accountant</div>
-                                    <p class="team-bio mt-2 mb-0">She is a dedicated accounting professional specializing in financial administration, account management, and precise legal and financial documentation.</p>
-                                </div>
-                                <div class="team-social mt-3">
-                                    <a href="https://www.linkedin.com/in/sherry-jane-cagara-012139ba/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="marquee-card-wrapper" aria-hidden="true">
-                    <div class="team-card h-100" style="overflow: hidden;">
-                        <div class="d-flex flex-column flex-sm-row h-100 align-items-stretch">
-                            <div class="col-sm-5" style="position: relative; min-height: 300px; background: #eaeaea;">
-                                <img src="yusuf.png" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block;" />
-                            </div>
-                            <div class="col-sm-7 d-flex flex-column justify-content-between p-4 text-start">
-                                <div>
-                                    <div class="team-name">Yousuf Mir</div>
-                                    <div class="team-role">Legal</div>
-                                    <p class="team-bio mt-2 mb-0">He is a dedicated legal professional specializing in corporate setups, compliance requirements, and meticulous legal and structural documentation.</p>
-                                </div>
-                                <div class="team-social mt-3">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                                    <a href="mailto:info@beaconuae.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 
     <style>
-        /* Container limits visibility to width of the screen */
         .marquee-container {
             overflow: hidden;
             width: 100%;
@@ -1659,34 +1412,26 @@ document.addEventListener("DOMContentLoaded", function () {
             padding: 1rem 0;
         }
 
-        /* The moving track holding both full sets side by side */
         .marquee-track {
             display: flex;
             width: max-content;
             animation: marqueeScroll 45s linear infinite;
         }
 
-        /* Set a fixed size for your team cards inside the marquee line */
         .marquee-card-wrapper {
             width: 550px; 
-            max-width: 85vw; /* Prevents overflow clipping on small mobile viewports */
-            padding: 0 15px; /* Acts as the gutter space between your cards */
+            max-width: 85vw;
+            padding: 0 15px;
             flex-shrink: 0;
         }
 
-        /* Pauses the slider movement entirely on hover for readability */
         .marquee-container:hover .marquee-track {
             animation-play-state: paused;
         }
 
-        /* CSS Keyframe calculated to reset precisely at exactly half track width */
         @keyframes marqueeScroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
     </style>
 </section>
@@ -1747,7 +1492,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <section id="blog" style="position: relative; padding: 5rem 0; background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('dubai3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; overflow: hidden;">
     <div class="container" style="position: relative; z-index: 2;">
-
         <div class="text-center mb-5 reveal">
             <span class="section-eyebrow">Insights &amp; Intelligence</span>
             <h2 class="section-heading">The UAE Business Knowledge Hub</h2>
@@ -1787,7 +1531,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
                     <div>
                         <div class="contact-label">Phone &amp; WhatsApp</div>
-                        <div class="contact-value"><a href="https://wa.me/971547775023" target ="_blank">+971 54 777 5023</a></div>
+                        <div class="contact-value"><a href="https://wa.me/971547775023" target="_blank">+971 54 777 5023</a></div>
                     </div>
                 </div>
 
@@ -1828,24 +1572,20 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <label for="firstName" class="form-label-beacon">Full Name <span class="text-orange">*</span></label>
                                 <input type="text" id="firstName" name="firstName" class="form-control-beacon" placeholder="e.g. Justin" required />
                             </div>
-                            <!--<div class="col-sm-6">
-                                <label for="lastName" class="form-label-beacon">Last Name <span class="text-orange">*</span></label>
-                                <input type="text" id="lastName" name="lastName" class="form-control-beacon" placeholder="e.g. Diango" required />
-                            </div>-->
                         </div>
                         <div class="mb-3">
                             <label for="phoneNumber" class="form-label-beacon">Phone Number <span class="text-orange">*</span></label>
                             <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control-beacon" placeholder="e.g. +971 123 456 7890" required />
                         </div>
                         <div class="mb-3">
-                            <label for="phoneNumber" class="form-label-beacon">E-mail Address <span class="text-orange">*</span></label>
-                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control-beacon" placeholder="leah@beaconuae.com" required />
+                            <label for="emailAddress" class="form-label-beacon">E-mail Address <span class="text-orange">*</span></label>
+                            <input type="email" id="emailAddress" name="emailAddress" class="form-control-beacon" placeholder="leah@beaconuae.com" required />
                         </div>
                         <div class="mb-4">
                             <label for="requirements" class="form-label-beacon">What kind of business are you planning to set up in the UAE? <span class="text-orange">*</span></label>
                             <textarea id="requirements" name="requirements" class="form-control-beacon" placeholder="Tell us about your business structure..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-beacon-blue w-100" style="padding:0.95rem;"><i class="bi bi send-fill me-2"></i>Contact Us</button>
+                        <button type="submit" class="btn btn-beacon-blue w-100" style="padding:0.95rem;"><i class="bi bi-send-fill me-2"></i>Contact Us</button>
                     </form>
                 </div>
             </div>
@@ -1874,7 +1614,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="mt-0">
                     <i class="bi bi-telephone-fill text-orange me-1"></i><a href="tel:+971547775023" class="text-white fw-semibold text-decoration-none" style="letter-spacing: 0.5px;">+971 54 777 5023</a>
                     <span class="mx-2 text-white-50" style="opacity: 0.3;">|</span>
-                    <i class="bi bi-envelope-fill text-orange me-1"></i><a href="mailto:info@beaconuae.com" class="text-white-50 text-decoration-none" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">info@beaconuae.com</a>
+                    <i class="bi bi-envelope-fill text-orange me-1"></i><a href="mailto:info@beaconuae.com" class="text-white-50 text-decoration-none">info@beaconuae.com</a>
                 </div>
             </div>
         </div>
@@ -1884,13 +1624,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="row align-items-center g-2" style="font-size: 0.78rem;">
             <div class="col-md-7 text-start">
                 <div class="d-flex flex-wrap gap-2 align-items-center" style="letter-spacing: 0.3px;">
-                    <a href="#services" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Registration</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
-                    <a href="#services" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Visas</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
-                    <a href="#services" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Banking</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
-                    <a href="#packages" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Packages</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
-                    <a href="#team" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Team</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
-                    <a href="#partner" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Partners</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
-                    <a href="#contact" class="text-white-50 text-decoration-none" style="transition: color 0.2s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Contact</a>
+                    <a href="#services" class="text-white-50 text-decoration-none">Registration</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#services" class="text-white-50 text-decoration-none">Visas</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#services" class="text-white-50 text-decoration-none">Banking</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#packages" class="text-white-50 text-decoration-none">Packages</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#team" class="text-white-50 text-decoration-none">Team</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#partner" class="text-white-50 text-decoration-none">Partners</a> <span class="text-white-50" style="opacity:0.4;">&bull;</span>
+                    <a href="#contact" class="text-white-50 text-decoration-none">Contact</a>
                 </div>
             </div>
             <div class="col-md-5 text-start text-md-end" style="color: #a1a1aa; letter-spacing: 0.2px;">
@@ -1898,8 +1638,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
     </div>
-</footer>
-
 </footer>
 
 <div id="aiAgentWidget" class="ai-agent-container">
@@ -2010,80 +1748,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 /* ============================================================
-    TAX CORE ENGINE MATHEMATICAL FUNCTIONALITY (MULTI-CURRENCY SYSTEM)
+   TAX CORE ENGINE MATHEMATICAL FUNCTIONALITY (EUR ONLY)
 ============================================================ */
-(function () {
-    let currentCurrency = 'EUR';
-
-    const profitSlider = document.getElementById('calcProfitSlider');
-    const profitInput = document.getElementById('calcProfitInput');
-    const countrySelect = document.getElementById('calcCountry');
+document.addEventListener("DOMContentLoaded", function () {
+    const calcCountry = document.getElementById("calcCountry");
+    const calcProfitInput = document.getElementById("calcProfitInput");
+    const calcProfitSlider = document.getElementById("calcProfitSlider");
+    const foreignTaxTitle = document.getElementById("foreignTaxTitle");
+    const euTaxDisplay = document.getElementById("euTaxDisplay");
+    const uaeTaxDisplay = document.getElementById("uaeTaxDisplay");
+    const savingsDisplay = document.getElementById("savingsDisplay");
+    const calcExplanation = document.getElementById("calcExplanation");
     
-    const toggleEUR = document.getElementById('toggleEUR');
-    const toggleUSD = document.getElementById('toggleUSD');
-    
-    const euTaxDisplay = document.getElementById('euTaxDisplay');
-    const uaeTaxDisplay = document.getElementById('uaeTaxDisplay');
-    const savingsDisplay = document.getElementById('savingsDisplay');
+    const foreignTaxBadge = document.getElementById("foreignTaxBadge");
+    const uaeTaxBadge = document.getElementById("uaeTaxBadge");
 
-    function runTaxCalculations(sourceValue) {
-        const netProfit = parseInt(sourceValue, 10) || 0;
-        const euTaxRate = parseFloat(countrySelect.value);
+    const EUR_RATE = 3.95;
 
-        const totalEuTax = netProfit * euTaxRate;
-        const taxExemptThreshold = (currentCurrency === 'EUR') ? 95000 : 110000;
-
-        let totalUaeTax = 0;
-        if (netProfit > taxExemptThreshold) {
-            totalUaeTax = (netProfit - taxExemptThreshold) * 0.09;
-        }
-
-        const netSavingsCalculated = totalEuTax - totalUaeTax;
-
-        euTaxDisplay.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 }).format(totalEuTax);
-        uaeTaxDisplay.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 }).format(totalUaeTax);
-        savingsDisplay.textContent = new Intl.NumberFormat('en-US', { style: 'currency', currency: currentCurrency, maximumFractionDigits: 0 }).format(netSavingsCalculated);
+    function renderFormattedValue(val) {
+        return "€" + Math.round(val).toLocaleString();
     }
 
-    function switchCurrencyMode(targetCurrency) {
-        if (currentCurrency === targetCurrency) return;
-        currentCurrency = targetCurrency;
+    function computeEngine() {
+        let revenueProfit = parseFloat(calcProfitInput.value) || 0;
+        if (revenueProfit <= 0) revenueProfit = 1;
 
-        if (currentCurrency === 'EUR') {
-            toggleEUR.className = "btn btn-sm w-50 fw-bold rounded-2 btn-beacon-blue";
-            toggleUSD.className = "btn btn-sm w-50 fw-bold rounded-2 text-secondary bg-transparent border-0";
-            document.querySelectorAll('.currency-symbol').forEach(el => el.textContent = '€');
+        const targetOption = calcCountry.options[calcCountry.selectedIndex];
+        const nominalTaxRate = parseFloat(targetOption.value);
+        const corporateRegion = targetOption.getAttribute("data-region");
+
+        if (corporateRegion === "UK") {
+            foreignTaxTitle.textContent = "UK Tax Cost";
         } else {
-            toggleUSD.className = "btn btn-sm w-50 fw-bold rounded-2 btn-beacon-blue";
-            toggleEUR.className = "btn btn-sm w-50 fw-bold rounded-2 text-secondary bg-transparent border-0";
-            document.querySelectorAll('.currency-symbol').forEach(el => el.textContent = '$');
+            foreignTaxTitle.textContent = "EU Tax Cost";
         }
 
-        runTaxCalculations(profitSlider.value);
+        const foreignTotalLiability = revenueProfit * nominalTaxRate;
+        const foreignEffectivePercentage = (foreignTotalLiability / revenueProfit) * 100;
+
+        const profitConvertedToAED = revenueProfit * EUR_RATE;
+        
+        let localTaxLiabilityInAED = 0;
+        if (profitConvertedToAED > 375000) {
+            localTaxLiabilityInAED = (profitConvertedToAED - 375000) * 0.09;
+        }
+        
+        const localUaeTaxCost = localTaxLiabilityInAED / EUR_RATE;
+        const uaeEffectivePercentage = (localUaeTaxCost / revenueProfit) * 100;
+
+        const optimizationSpread = foreignTotalLiability - localUaeTaxCost;
+
+        euTaxDisplay.textContent = renderFormattedValue(foreignTotalLiability);
+        uaeTaxDisplay.textContent = renderFormattedValue(localUaeTaxCost);
+        savingsDisplay.textContent = renderFormattedValue(Math.max(0, optimizationSpread));
+
+        if (foreignTaxBadge) foreignTaxBadge.textContent = `${foreignEffectivePercentage.toFixed(1)}% Effective`;
+        if (uaeTaxBadge) uaeTaxBadge.textContent = `${uaeEffectivePercentage.toFixed(1)}% Effective`;
+
+        const localThresholdEquivalence = Math.round(375000 / EUR_RATE);
+        calcExplanation.textContent = `Leveraging the UAE's 0% tax bracket on your first ${renderFormattedValue(localThresholdEquivalence)} of profit. Remaining profit is taxed at just 9%.`;
     }
 
-    toggleEUR.addEventListener('click', () => switchCurrencyMode('EUR'));
-    toggleUSD.addEventListener('click', () => switchCurrencyMode('USD'));
+    if (calcProfitSlider && calcProfitInput) {
+        calcProfitSlider.addEventListener("input", function () {
+            calcProfitInput.value = this.value;
+            computeEngine();
+        });
 
-    profitSlider.addEventListener('input', function() {
-        profitInput.value = this.value;
-        runTaxCalculations(this.value);
-    });
+        calcProfitInput.addEventListener("input", function () {
+            let val = parseInt(this.value, 10) || 0;
+            if (val > 2000000) val = 2000000;
+            calcProfitSlider.value = val;
+            computeEngine();
+        });
+    }
 
-    profitInput.addEventListener('input', function() {
-        let value = parseInt(this.value, 10) || 0;
-        if (value > 2000000) value = 2000000;
-        profitSlider.value = value;
-        runTaxCalculations(value);
-    });
+    if (calcCountry) {
+        calcCountry.addEventListener("change", computeEngine);
+    }
 
-    countrySelect.addEventListener('change', () => runTaxCalculations(profitSlider.value));
-
-    runTaxCalculations(profitSlider.value);
-})();
+    computeEngine();
+});
 
 /* ============================================================
-    DYNAMIC UAE INTELLIGENCE NEWS GENERATOR
+   DYNAMIC UAE INTELLIGENCE NEWS GENERATOR
 ============================================================ */
 document.addEventListener("DOMContentLoaded", function () {
     const newsRow = document.getElementById("dynamic-news-row");
@@ -2194,7 +1942,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ============================================================
-    VERIFIED GOOGLE REVIEWS INJECTOR ENGINE
+   VERIFIED GOOGLE REVIEWS INJECTOR ENGINE
 ============================================================ */
 document.addEventListener("DOMContentLoaded", function () {
     const reviewsContainer = document.getElementById("google-reviews-container");
@@ -2258,7 +2006,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ============================================================
-    BOOTSTRAP LAYOUT UI EVENT HANDLING
+   BOOTSTRAP LAYOUT UI EVENT HANDLING
 ============================================================ */
 (function () {
     const nav = document.getElementById('mainNav');
@@ -2312,7 +2060,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 /* ============================================================
-    FREEZONE VS MAINLAND SMART SCREENING SYSTEM (5-STEP ENGINE)
+   FREEZONE VS MAINLAND SMART SCREENING SYSTEM (5-STEP ENGINE)
 ============================================================ */
 let quizAnswers = { step1: '', step2: '', step3: '', step4: '', step5: '' };
 
