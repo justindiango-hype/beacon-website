@@ -702,40 +702,86 @@
     </div>
 </nav>
 
-<header id="hero">
+<!-- Hero Header Section -->
+<header id="hero" style="position: relative; padding: 100px 0 50px 0; overflow: hidden; min-height: 100vh; display: flex; align-items: center;">
+    
+    <!-- Top Floating Logo -->
     <div class="container d-none d-lg-block" style="position: absolute; top: 15px; left: 0; right: 0; pointer-events: none; z-index: 10;">
-        <img src="beaconlogo.png" alt="Al Manal BEACON LLC" style="height: 250px; width: auto; pointer-events: auto;" />
+        <img src="beaconlogo.png" alt="Al Manal BEACON LLC" style="height: 220px; width: auto; pointer-events: auto;" />
     </div>
 
-    <div class="container position-relative" style="z-index: 12;">
-        <div class="row align-items-center g-5">
+    <!-- CEO Cutout Graphic (Position Untouched) -->
+    <img src="kingahero.png" alt="Kinga Hero" class="d-none d-lg-block" style="
+        position: absolute; 
+        bottom: -20px; 
+        left: 110px; 
+        height: 82%; 
+        width: auto; 
+        z-index: 5; 
+        pointer-events: none; 
+        object-fit: contain;
+    " />
+
+    <!-- Main Content Container -->
+    <div class="container-fluid px-lg-5 position-relative" style="z-index: 12;">
+        <div class="row align-items-center justify-content-between g-3">
             
-            <div class="col-lg-6 text-start">
-                <div class="hero-badge" style="display: inline-flex; align-items: center; background: rgba(223, 134, 39, 0.15); border: 1px solid rgba(223, 134, 39, 0.4); color: #FFB356; font-weight: 700; letter-spacing: 0.5px; border-radius: 50px; padding: 0.4rem 1.2rem; font-size: 0.8rem;">
+            <!-- 1. Left Spacer Column -->
+            <div class="col-lg-3 d-none d-lg-block"></div>
+
+            <!-- 2. Text Content Column -->
+            <div class="col-lg-5 text-start d-flex flex-column justify-content-center my-auto" style="z-index: 15; margin-left: 2rem !important; max-width: 500px;">
+                <div class="hero-badge" style="display: inline-flex; align-items: center; background: rgba(223, 134, 39, 0.25); border: 1px solid rgba(255, 179, 86, 0.6); color: #FFB356; font-weight: 700; letter-spacing: 0.5px; border-radius: 50px; padding: 0.35rem 1.1rem; font-size: 0.8rem; width: fit-content; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
                      <i class="bi bi-exclamation-triangle-fill me-2" style="color: #FFB356;"></i>
                      Stop Bleeding Revenue to EU Taxes
                 </div>
-                <h1 class="hero-title mt-3">
+                
+                <h1 class="hero-title mt-3" style="color: #ffffff; font-size: 2.5rem; line-height: 1.2; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.9);">
                     Why Suffer the <span style="color: #FFB356;">Pain</span> of European Taxes?
                 </h1>
-                <p class="hero-subtitle">
-                    <p class="hero-subtitle">
-                        Running a business in Europe or the UK means losing up to 25% to 35% of your hard-earned corporate profits to taxes. <br><br>By migrating your structure or registering in the UAE, you unlock an elite 0% personal tax, optimize your corporate liability, and step into an unmatched lifestyle ecosystem.
-                    </p>
+                
+                <p class="hero-subtitle mt-3" style="
+                    color: #ffffff !important; 
+                    font-size: 1.05rem; 
+                    font-weight: 500; 
+                    line-height: 1.6; 
+                    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+                ">
+                    Running a business in Europe or the UK means losing up to 25% to 35% of your hard-earned corporate profits to taxes. <br><br>By migrating your structure or registering in the UAE, you unlock an elite 0% personal tax, optimize your corporate liability, and step into an unmatched lifestyle ecosystem.
                 </p>
-                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start">
-                    <a href="#why-uae" class="btn btn-beacon-orange"><i class="bi bi-arrow-down-circle me-2"></i>See UAE Advantages</a>
+                
+                <div class="d-flex flex-column flex-sm-row gap-3 align-items-start mt-3">
+                    <a href="#why-uae" class="btn btn-beacon-orange" style="box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);"><i class="bi bi-arrow-down-circle me-2"></i>See UAE Advantages</a>
                 </div>
             </div>
 
-            <div class="col-lg-6">
-                <div class="calc-container">
-                    <h3 class="fw-bold mb-1 text-blue text-start" style="font-size: 1.4rem;">Calculate Your Savings Blueprint</h3>
-                    <p class="text-muted text-start mb-4" style="font-size: 0.85rem;">Select your operational base to calculate real-time savings.</p>
+            <!-- 3. Real-Time Tax Calculator Column (True Translucent Frosted Glass) -->
+            <div class="col-lg-4 my-auto">
+                <div class="calc-container p-3 p-md-4 rounded-4 position-relative" style="
+                    max-width: 480px; 
+                    width: 100%;
+                    margin-left: -1rem !important;
+                    border-top: 5px solid #DF8627; 
+                    border-left: 1px solid rgba(255, 255, 255, 0.25);
+                    border-right: 1px solid rgba(255, 255, 255, 0.25);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.15); 
+                    background: rgba(255, 255, 255, 0.12);
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                ">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <h3 class="fw-bold mb-0 text-start" style="font-size: 1.25rem; color: #ffffff;">Calculate Your Savings Blueprint</h3>
+                        <span class="badge rounded-pill px-2 py-1" style="font-size: 0.65rem; background: rgba(223, 134, 39, 0.25); color: #FFB356; border: 1px solid rgba(255, 179, 86, 0.4);">
+                            <i class="bi bi-lightning-charge-fill me-1"></i>Real-Time Calculator
+                        </span>
+                    </div>
+                    <p class="mb-3 text-start" style="font-size: 0.8rem; color: #e2e8f0;">Select your operational base to calculate real-time savings.</p>
                     
-                    <div class="mb-4 text-start">
-                        <label class="form-label-beacon mb-2">Current Location</label>
-                        <select id="calcCountry" class="form-select border-2 p-2" style="border-radius: 10px;">
+                    <!-- Country Selector -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label-beacon mb-1 fw-semibold" style="font-size: 0.8rem; color: #ffffff;">Current Location</label>
+                        <select id="calcCountry" class="form-select border-1 p-2 shadow-sm" style="border-radius: 8px; border-color: rgba(255, 255, 255, 0.3); background-color: rgba(255, 255, 255, 0.9); font-size: 0.88rem; color: #0f172a;">
                             <option value="0.25" data-region="UK">United Kingdom (~25.0% Tax)</option>
                             <option value="0.301" data-region="EU" selected>Germany (~30.1% Tax)</option>
                             <option value="0.278" data-region="EU">Italy (~27.8% Tax)</option>
@@ -750,165 +796,70 @@
                         </select>
                     </div>
 
-                    <div class="mb-4 text-start">
-                        <div class="d-flex justify-content-between align-items-center mb-3 p-1 bg-light rounded-3" style="max-width: 200px;">
-                            <button type="button" id="toggleEUR" class="btn btn-sm w-50 fw-bold rounded-2 btn-beacon-blue" style="padding: 0.35rem 0; font-size:0.85rem;">EUR (€)</button>
-                            <button type="button" id="toggleUSD" class="btn btn-sm w-50 fw-bold rounded-2 text-secondary bg-transparent border-0" style="padding: 0.35rem 0; font-size:0.85rem;">USD ($)</button>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <label for="calcProfitInput" class="form-label-beacon m-0">Annual Net Profit (<span class="currency-symbol">€</span>)</label>
-                            <div class="input-group input-group-sm" style="width: 160px;">
-                                <span class="input-group-text border-2 bg-light text-blue fw-bold currency-symbol" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">€</span>
-                                <input type="number" id="calcProfitInput" class="form-control border-2 fw-bold text-blue" min="50000" max="2000000" step="25000" value="250000" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; font-size: 1rem; padding: 0.3rem 0.5rem;">
+                    <!-- Profit Inputs (EUR Only) -->
+                    <div class="mb-3 text-start">
+                        <div class="d-flex justify-content-between align-items-center mb-1.5">
+                            <label for="calcProfitInput" class="form-label-beacon m-0 fw-semibold" style="font-size: 0.8rem; color: #ffffff;">Annual Net Profit (€)</label>
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <span class="input-group-text border-1 fw-bold" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-color: rgba(255, 255, 255, 0.3); background-color: rgba(255, 255, 255, 0.9); color: #0f172a;">€</span>
+                                <input type="number" id="calcProfitInput" class="form-control border-1 fw-bold" min="50000" max="2000000" step="25000" value="250000" style="border-top-right-radius: 8px; border-bottom-right-radius: 8px; font-size: 0.9rem; padding: 0.2rem 0.4rem; border-color: rgba(255, 255, 255, 0.3); background-color: rgba(255, 255, 255, 0.9); color: #0f172a;">
                             </div>
                         </div>
-                        <input type="range" id="calcProfitSlider" class="custom-slider" min="50000" max="2000000" step="25000" value="250000">
+                        <input type="range" id="calcProfitSlider" class="custom-slider w-100" min="50000" max="2000000" step="25000" value="250000" style="accent-color: #DF8627;">
                     </div>
 
-                    <div class="row g-3 mb-4">
+                    <!-- Tax Display Metrics -->
+                    <div class="row g-2 mb-3">
                         <div class="col-6 text-start">
-                            <div class="calc-metrics h-100 p-3" style="background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
-                                <div id="foreignTaxTitle" class="metric-title" style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">EU Tax Cost</div>
-                                <div id="euTaxDisplay" class="metric-value pain" style="font-size: 1.4rem; font-weight: 800; color: #dc2626;">€75,000</div>
+                            <div class="calc-metrics h-100 p-2.5 shadow-sm" style="background: rgba(254, 242, 242, 0.9); border-radius: 10px; border-left: 4px solid #dc2626; border-top: 1px solid #fee2e2; border-right: 1px solid #fee2e2; border-bottom: 1px solid #fee2e2;">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span id="foreignTaxTitle" class="metric-title" style="font-size: 0.7rem; font-weight: 700; color: #991b1b; text-transform: uppercase;">EU Tax Cost</span>
+                                    <span id="foreignTaxBadge" class="badge bg-danger text-white" style="font-size: 0.6rem;">30.1% Effective</span>
+                                </div>
+                                <div id="euTaxDisplay" class="metric-value pain" style="font-size: 1.25rem; font-weight: 800; color: #dc2626;">€75,250</div>
                             </div>
                         </div>
                         <div class="col-6 text-start">
-                            <div class="calc-metrics h-100 p-3" style="background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
-                                <div class="metric-title" style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">UAE Tax Cost</div>
-                                <div id="uaeTaxDisplay" class="metric-value gain" style="font-size: 1.4rem; font-weight: 800; color: #16a34a;">€13,500</div>
+                            <div class="calc-metrics h-100 p-2.5 shadow-sm" style="background: rgba(240, 253, 244, 0.9); border-radius: 10px; border-left: 4px solid #16a34a; border-top: 1px solid #dcfce7; border-right: 1px solid #dcfce7; border-bottom: 1px solid #dcfce7;">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="metric-title" style="font-size: 0.7rem; font-weight: 700; color: #166534; text-transform: uppercase;">UAE Tax Cost</span>
+                                    <span id="uaeTaxBadge" class="badge bg-success text-white" style="font-size: 0.6rem;">5.6% Effective</span>
+                                </div>
+                                <div id="uaeTaxDisplay" class="metric-value gain" style="font-size: 1.25rem; font-weight: 800; color: #16a34a;">€13,956</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="savings-banner mb-4 text-center p-4 text-white" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); border-radius: 12px;">
-                        <div class="text-uppercase fw-bold opacity-75" style="font-size: 0.75rem; letter-spacing: 1px;">Potential Annual Savings</div>
-                        <div id="savingsDisplay" class="fw-black m-0" style="font-size: 2.2rem; font-weight: 800;">€61,500</div>
-                        <div id="calcExplanation" class="small opacity-90 mt-2 border-top border-white border-opacity-20 pt-2" style="font-size: 0.8rem; font-weight: 300;">
-                            Leveraging the UAE's 0% threshold on your first AED 375,000 of business profit.
+                    <!-- Savings Output Banner -->
+                    <div class="savings-banner mb-3 text-center p-3 text-white shadow" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); border-radius: 10px;">
+                        <div class="text-uppercase fw-bold opacity-75" style="font-size: 0.7rem; letter-spacing: 1px;">Potential Annual Savings</div>
+                        <div id="savingsDisplay" class="fw-black m-0" style="font-size: 2rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">€61,294</div>
+                        <div id="calcExplanation" class="small opacity-90 mt-1 border-top border-white border-opacity-20 pt-1" style="font-size: 0.75rem; font-weight: 300;">
+                            Leveraging the UAE's 0% tax bracket on your first €94,937 of profit. Remaining profit is taxed at just 9%.
                         </div>
                     </div>
 
+                    <!-- CTA Button -->
                     <div class="text-center">
-                        <a href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank" class="btn btn-beacon-orange w-100 py-3 text-uppercase fw-bold" style="font-size: 0.95rem; border-radius: 50px; background-color: #2251A3; border: none; color: #fff;">
-                            <i class="bi bi-calendar-check-fill me-2"></i>Claim These Savings – Book a Free Consultation
+                        <a href="https://beaconuae.zohobookings.com/#/ceo-online-meeting" target="_blank" class="btn w-100 py-2.5 text-uppercase fw-bold shadow" style="
+                            font-size: 0.85rem; 
+                            border-radius: 50px; 
+                            background: linear-gradient(135deg, #DF8627 0%, #c97217 100%); 
+                            border: none; 
+                            color: #fff;
+                            box-shadow: 0 8px 18px rgba(223, 134, 39, 0.35);
+                        ">
+                            <i class="bi bi-calendar-check-fill me-2"></i>Claim These Savings – Book Consultation
                         </a>
                     </div>
                 </div>
-</div>
+            </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const calcCountry = document.getElementById("calcCountry");
-    const calcProfitInput = document.getElementById("calcProfitInput");
-    const calcProfitSlider = document.getElementById("calcProfitSlider");
-    const foreignTaxTitle = document.getElementById("foreignTaxTitle");
-    const euTaxDisplay = document.getElementById("euTaxDisplay");
-    const uaeTaxDisplay = document.getElementById("uaeTaxDisplay");
-    const savingsDisplay = document.getElementById("savingsDisplay");
-    const calcExplanation = document.getElementById("calcExplanation");
+        </div>
+    </div>
+</header>
 
-    const toggleEUR = document.getElementById("toggleEUR");
-    const toggleUSD = document.getElementById("toggleUSD");
-    const currencySymbols = document.querySelectorAll(".currency-symbol");
-
-    let activeCurrency = "EUR";
-
-    // Reference Peg Values against AED 
-    const currencyRates = {
-        USD: 3.6725, // Fixed Peg
-        EUR: 3.95    // EUR to AED Conversion
-    };
-
-    const symbols = {
-        USD: "$",
-        EUR: "€"
-    };
-
-    function renderFormattedValue(val) {
-        return symbols[activeCurrency] + Math.round(val).toLocaleString();
-    }
-
-    function computeEngine() {
-        let revenueProfit = parseFloat(calcProfitInput.value) || 0;
-        if (revenueProfit <= 0) revenueProfit = 1;
-
-        const targetOption = calcCountry.options[calcCountry.selectedIndex];
-        const nominalTaxRate = parseFloat(targetOption.value);
-        const corporateRegion = targetOption.getAttribute("data-region");
-
-        // Dynamic Card Title Adjustments
-        if (corporateRegion === "UK") {
-            foreignTaxTitle.textContent = "UK Tax Cost";
-        } else {
-            foreignTaxTitle.textContent = "EU Tax Cost";
-        }
-
-        // 1. Foreign baseline calculation
-        const foreignTotalLiability = revenueProfit * nominalTaxRate;
-
-        // 2. UAE progressive validation (Calculated through AED)
-        const conversionMultiplier = currencyRates[activeCurrency];
-        const profitConvertedToAED = revenueProfit * conversionMultiplier;
-        
-        let localTaxLiabilityInAED = 0;
-        if (profitConvertedToAED > 375000) {
-            localTaxLiabilityInAED = (profitConvertedToAED - 375000) * 0.09;
-        }
-        
-        const localUaeTaxCost = localTaxLiabilityInAED / conversionMultiplier;
-
-        // 3. Differential outcome metrics
-        const optimizationSpread = foreignTotalLiability - localUaeTaxCost;
-
-        // 4. Update elements safely
-        euTaxDisplay.textContent = renderFormattedValue(foreignTotalLiability);
-        uaeTaxDisplay.textContent = renderFormattedValue(localUaeTaxCost);
-        savingsDisplay.textContent = renderFormattedValue(Math.max(0, optimizationSpread));
-
-        // Build explanatory prompt showing user the converted 0% tier allowance
-        const localThresholdEquivalence = Math.round(375000 / conversionMultiplier);
-        calcExplanation.textContent = `Leveraging the UAE's 0% tax bracket on your first ${renderFormattedValue(localThresholdEquivalence)} of profit. Remaining profit is taxed at just 9%.`;
-    }
-
-    // Connect slider inputs seamlessly
-    calcProfitSlider.addEventListener("input", function () {
-        calcProfitInput.value = this.value;
-        computeEngine();
-    });
-
-    calcProfitInput.addEventListener("input", function () {
-        calcProfitSlider.value = this.value;
-        computeEngine();
-    });
-
-    calcCountry.addEventListener("change", computeEngine);
-
-    // Switch controllers for active currency states
-    function updateCurrencyTab(activeBtn, inactiveBtn, choice) {
-        activeBtn.classList.add("btn-beacon-blue");
-        activeBtn.classList.remove("text-secondary", "bg-transparent", "border-0");
-        inactiveBtn.classList.remove("btn-beacon-blue");
-        inactiveBtn.classList.add("text-secondary", "bg-transparent", "border-0");
-
-        activeCurrency = choice;
-        currencySymbols.forEach(element => element.textContent = symbols[choice]);
-        computeEngine();
-    }
-
-    toggleEUR.addEventListener("click", function() {
-        updateCurrencyTab(toggleEUR, toggleUSD, "EUR");
-    });
-
-    toggleUSD.addEventListener("click", function() {
-        updateCurrencyTab(toggleUSD, toggleEUR, "USD");
-    });
-
-    // Execute on initial payload mount
-    computeEngine();
-});
-</script>
-
+<!-- JavaScript Engine -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const calcCountry = document.getElementById("calcCountry");
@@ -923,25 +874,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const foreignTaxBadge = document.getElementById("foreignTaxBadge");
     const uaeTaxBadge = document.getElementById("uaeTaxBadge");
 
-    const toggleEUR = document.getElementById("toggleEUR");
-    const toggleUSD = document.getElementById("toggleUSD");
-    const currencySymbols = document.querySelectorAll(".currency-symbol");
-
-    let activeCurrency = "EUR";
-
-    // 2026 Reference Peg Values against AED 
-    const currencyRates = {
-        USD: 3.6725, // Immutable Fixed Peg
-        EUR: 3.95    // EUR to AED Average Market Standard
-    };
-
-    const symbols = {
-        USD: "$",
-        EUR: "€"
-    };
+    const EUR_RATE = 3.95;
 
     function renderFormattedValue(val) {
-        return symbols[activeCurrency] + Math.round(val).toLocaleString();
+        return "€" + Math.round(val).toLocaleString();
     }
 
     function computeEngine() {
@@ -952,47 +888,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const nominalTaxRate = parseFloat(targetOption.value);
         const corporateRegion = targetOption.getAttribute("data-region");
 
-        // Dynamic Card Title Adjustments
         if (corporateRegion === "UK") {
             foreignTaxTitle.textContent = "UK Tax Cost";
         } else {
             foreignTaxTitle.textContent = "EU Tax Cost";
         }
 
-        // 1. Foreign baseline calculation
         const foreignTotalLiability = revenueProfit * nominalTaxRate;
         const foreignEffectivePercentage = (foreignTotalLiability / revenueProfit) * 100;
 
-        // 2. UAE progressive validation (Calculated through AED)
-        const conversionMultiplier = currencyRates[activeCurrency];
-        const profitConvertedToAED = revenueProfit * conversionMultiplier;
+        const profitConvertedToAED = revenueProfit * EUR_RATE;
         
         let localTaxLiabilityInAED = 0;
         if (profitConvertedToAED > 375000) {
             localTaxLiabilityInAED = (profitConvertedToAED - 375000) * 0.09;
         }
         
-        const localUaeTaxCost = localTaxLiabilityInAED / conversionMultiplier;
+        const localUaeTaxCost = localTaxLiabilityInAED / EUR_RATE;
         const uaeEffectivePercentage = (localUaeTaxCost / revenueProfit) * 100;
 
-        // 3. Differential outcome metrics
         const optimizationSpread = foreignTotalLiability - localUaeTaxCost;
 
-        // 4. Update elements safely
         euTaxDisplay.textContent = renderFormattedValue(foreignTotalLiability);
         uaeTaxDisplay.textContent = renderFormattedValue(localUaeTaxCost);
         savingsDisplay.textContent = renderFormattedValue(Math.max(0, optimizationSpread));
 
-        // Update effective percentage indicators
-        foreignTaxBadge.textContent = `${foreignEffectivePercentage.toFixed(1)}% Effective`;
-        uaeTaxBadge.textContent = `${uaeEffectivePercentage.toFixed(1)}% Effective`;
+        if (foreignTaxBadge) foreignTaxBadge.textContent = `${foreignEffectivePercentage.toFixed(1)}% Effective`;
+        if (uaeTaxBadge) uaeTaxBadge.textContent = `${uaeEffectivePercentage.toFixed(1)}% Effective`;
 
-        // Build explanatory prompt showing user the converted 0% tier allowance
-        const localThresholdEquivalence = Math.round(375000 / conversionMultiplier);
+        const localThresholdEquivalence = Math.round(375000 / EUR_RATE);
         calcExplanation.textContent = `Leveraging the UAE's 0% tax bracket on your first ${renderFormattedValue(localThresholdEquivalence)} of profit. Remaining profit is taxed at just 9%.`;
     }
 
-    // Connect slider inputs seamlessly
     calcProfitSlider.addEventListener("input", function () {
         calcProfitInput.value = this.value;
         computeEngine();
@@ -1005,34 +932,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calcCountry.addEventListener("change", computeEngine);
 
-    // Switch controllers for active currency states
-    function updateCurrencyTab(activeBtn, inactiveBtn, choice) {
-        activeBtn.classList.add("btn-beacon-blue");
-        activeBtn.classList.remove("text-secondary", "bg-transparent", "border-0");
-        inactiveBtn.classList.remove("btn-beacon-blue");
-        inactiveBtn.classList.add("text-secondary", "bg-transparent", "border-0");
-
-        activeCurrency = choice;
-        currencySymbols.forEach(element => element.textContent = symbols[choice]);
-        computeEngine();
-    }
-
-    toggleEUR.addEventListener("click", function() {
-        updateCurrencyTab(toggleEUR, toggleUSD, "EUR");
-    });
-
-    toggleUSD.addEventListener("click", function() {
-        updateCurrencyTab(toggleUSD, toggleEUR, "USD");
-    });
-
-    // Execute on initial payload mount
     computeEngine();
 });
 </script>
-
-        </div>
-    </div>
-</header>
 
 <section id="about-us" class="bg-white" style="padding: 5rem 0;">
     <div class="container">
